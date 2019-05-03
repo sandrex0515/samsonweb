@@ -1,0 +1,145 @@
+<div class="main-content">
+        <section class="section">
+          <h3 class="section-header text-center">
+            <div class="">Samson College of Science and Technology Grading System</div>
+          </h3>
+   
+         
+    
+    
+          <div class="row">
+              <div class="col-lg-4" style="border:1px solid rgba(170, 170, 170, 0.75);background: rgb(142, 149, 207)">
+                <h3 class="text-center">Prelim</h3>
+                <hr>
+                <h5>Prelim Exam: {{(studentgrade.pexam * 1) / studentgrade.prelim * 100 | number}}% </h5>
+                <h5>Recitation/Activities: {{(studentgrade.pactive * 1 )/ studentgrade.activities * 100 | number}}% </h5>
+                <h5>Attendance: {{(studentgrade.pattend * 1) / studentgrade.attendance * 100 | number}}%</h5>
+                <h5>Character: {{(studentgrade.pchar * 1) / studentgrade.character * 100 | number}}%</h5>
+                <hr>
+                <h3>Grade: {{(studentgrade.pexam * 1 / studentgrade.prelim * 100 / 4) + (studentgrade.pactive * 1  / studentgrade.activities * 100 / 4) + (studentgrade.pattend * 1 / studentgrade.attendance * 100 / 4) + (studentgrade.pchar * 1 / studentgrade.character * 100 / 4)  | number}}%</h3>
+                <h3 ng-if="(studentgrade.pexam * 1 / studentgrade.prelim * 100 / 4) + (studentgrade.pactive * 1  / studentgrade.activities * 100 / 4) + (studentgrade.pattend * 1 / studentgrade.attendance * 100 / 4) + (studentgrade.pchar * 1 / studentgrade.character * 100 / 4) >= 75" class="text-success">Remarks: Passed</h3>
+                <h3 ng-if="(studentgrade.pexam * 1 / studentgrade.prelim * 100 / 4) + (studentgrade.pactive * 1  / studentgrade.activities * 100 / 4) + (studentgrade.pattend * 1 / studentgrade.attendance * 100 / 4) + (studentgrade.pchar * 1 / studentgrade.character * 100 / 4) <= 74" class="text-danger">Remarks: Failed</h3>
+              </div>
+              <div class="col-lg-4" style="border:1px solid rgba(170, 170, 170, 0.75);background: rgb(101, 228, 169)">
+                  <h3 class="text-center">Midterm</h3>
+                  <hr>
+                  <h5>Midterm Exam: {{(studentgrade.mexam * 1) / studentgrade.midterm * 100 | number}}%</h5>
+                  <h5>Recitation/Activities: {{(studentgrade.mactive * 1 )/ studentgrade.activities * 100 | number}}%</h5>
+                  <h5>Attendance: {{(studentgrade.mattend * 1) / studentgrade.attendance * 100 | number}}%</h5>
+                  <h5>Character: {{(studentgrade.mchar * 1) / studentgrade.character * 100 | number}}%</h5>
+                  <hr>
+                  <h3>Grade: {{(studentgrade.mexam * 1 / studentgrade.midterm * 100 / 4) + (studentgrade.mactive * 1  / studentgrade.activities * 100 / 4) + (studentgrade.mattend * 1 / studentgrade.attendance * 100 / 4) + (studentgrade.mchar * 1 / studentgrade.character * 100 / 4)  | number}}%</h3>
+                  <h3 ng-if="(studentgrade.mexam * 1 / studentgrade.midterm * 100 / 4) + (studentgrade.mactive * 1  / studentgrade.activities * 100 / 4) + (studentgrade.mattend * 1 / studentgrade.attendance * 100 / 4) + (studentgrade.mchar * 1 / studentgrade.character * 100 / 4) >= 75" class="text-success">Remarks: Passed</h3>
+                  <h3 ng-if="(studentgrade.mexam * 1 / studentgrade.midterm * 100 / 4) + (studentgrade.mactive * 1  / studentgrade.activities * 100 / 4) + (studentgrade.mattend * 1 / studentgrade.attendance * 100 / 4) + (studentgrade.mchar * 1 / studentgrade.character * 100 / 4) <= 74" class="text-danger">Remarks: Failed</h3>
+                </div>
+                <div class="col-lg-4" style="border:1px solid rgba(170, 170, 170, 0.75);background: rgb(235, 150, 111)">
+                    <h3 class="text-center">Finals</h3>
+                    <hr>
+                    <h5>Finals Exam: {{(studentgrade.fexam * 1) / studentgrade.finals * 100 | number}}%</h5>
+                    <h5>Recitation/Activities: {{(studentgrade.factive * 1 )/ studentgrade.activities * 100 | number}}%</h5>
+                    <h5>Attendance: {{(studentgrade.fattend * 1) / studentgrade.attendance * 100 | number}}%</h5>
+                    <h5>Character: {{(studentgrade.fchar * 1) / studentgrade.character * 100 | number}}%</h5>
+                    <hr>
+                    <h3>Grade: {{(studentgrade.fexam * 1 / studentgrade.finals * 100 / 4) + (studentgrade.factive * 1  / studentgrade.activities * 100 / 4) + (studentgrade.fattend * 1 / studentgrade.attendance * 100 / 4) + (studentgrade.fchar * 1 / studentgrade.character * 100 / 4)  | number}}%</h3>
+                    <h3 ng-if="(studentgrade.fexam * 1 / studentgrade.finals * 100 / 4) + (studentgrade.factive * 1  / studentgrade.activities * 100 / 4) + (studentgrade.fattend * 1 / studentgrade.attendance * 100 / 4) + (studentgrade.fchar * 1 / studentgrade.character * 100 / 4) >=75" class="text-success">Remarks: Passed</h3>
+                    <h3 ng-if="(studentgrade.fexam * 1 / studentgrade.finals * 100 / 4) + (studentgrade.factive * 1  / studentgrade.activities * 100 / 4) + (studentgrade.fattend * 1 / studentgrade.attendance * 100 / 4) + (studentgrade.fchar * 1 / studentgrade.character * 100 / 4) <=74" class="text-danger">Remarks: Failed</h3>
+                  </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 text-center" style="border:1px solid rgba(170, 170, 170, 0.75);background: blanchedalmond">
+                    <h3 class="text-center">Overall Grade</h3>
+                    <hr>
+                    <h5>Prelim: {{(studentgrade.pexam * 1 / studentgrade.prelim * 100 / 4) + (studentgrade.pactive * 1  / studentgrade.activities * 100 / 4) + (studentgrade.pattend * 1 / studentgrade.attendance * 100 / 4) + (studentgrade.pchar * 1 / studentgrade.character * 100 / 4)  | number}}%</h5>
+                    <h5>Midterm: {{(studentgrade.mexam * 1 / studentgrade.midterm * 100 / 4) + (studentgrade.mactive * 1  / studentgrade.activities * 100 / 4) + (studentgrade.mattend * 1 / studentgrade.attendance * 100 / 4) + (studentgrade.mchar * 1 / studentgrade.character * 100 / 4)  | number}}%</h5>
+                    <h5>Finals:  {{(studentgrade.fexam * 1 / studentgrade.finals * 100 / 4) + (studentgrade.factive * 1  / studentgrade.activities * 100 / 4) + (studentgrade.fattend * 1 / studentgrade.attendance * 100 / 4) + (studentgrade.fchar * 1 / studentgrade.character * 100 / 4)  | number}}%</h5>
+                    <hr>
+                    <h3>Grade: 
+                        {{(studentgrade.pexam * 1 / studentgrade.prelim * 100 / 4 / 3) + (studentgrade.pactive * 1  / studentgrade.activities * 100 / 4 / 3) + (studentgrade.pattend * 1 / studentgrade.attendance * 100 / 4 / 3) + (studentgrade.pchar * 1 / studentgrade.character * 100 / 4 / 3) +(studentgrade.mexam * 1 / studentgrade.midterm * 100 / 4 / 3) + 
+                          (studentgrade.mactive * 1  / studentgrade.activities * 100 / 4 / 3) + (studentgrade.mattend * 1 / studentgrade.attendance * 100 / 4 / 3) + (studentgrade.mchar * 1 / studentgrade.character * 100 / 4 / 3) + 
+                          (studentgrade.fexam * 1 / studentgrade.finals * 100 / 4 / 3) + (studentgrade.factive * 1  / studentgrade.activities * 100 / 4 / 3) + 
+                          (studentgrade.fattend * 1 / studentgrade.attendance * 100 / 4 / 3) + (studentgrade.fchar * 1 / studentgrade.character * 100 / 4 / 3)  | number}}%
+
+                    </h3>
+                    <h3 ng-if="(studentgrade.pexam * 1 / studentgrade.prelim * 100 / 4 / 3) + (studentgrade.pactive * 1  / studentgrade.activities * 100 / 4 / 3) + (studentgrade.pattend * 1 / studentgrade.attendance * 100 / 4 / 3) + (studentgrade.pchar * 1 / studentgrade.character * 100 / 4 / 3) +(studentgrade.mexam * 1 / studentgrade.midterm * 100 / 4 / 3) + 
+                    (studentgrade.mactive * 1  / studentgrade.activities * 100 / 4 / 3) + (studentgrade.mattend * 1 / studentgrade.attendance * 100 / 4 / 3) + (studentgrade.mchar * 1 / studentgrade.character * 100 / 4 / 3) + 
+                    (studentgrade.fexam * 1 / studentgrade.finals * 100 / 4 / 3) + (studentgrade.factive * 1  / studentgrade.activities * 100 / 4 / 3) + 
+                    (studentgrade.fattend * 1 / studentgrade.attendance * 100 / 4 / 3) + (studentgrade.fchar * 1 / studentgrade.character * 100 / 4 / 3) >=75" class="text-success">Remarks: Passed</h3>
+                    <h3 ng-if="(studentgrade.pexam * 1 / studentgrade.prelim * 100 / 4 / 3) + (studentgrade.pactive * 1  / studentgrade.activities * 100 / 4 / 3) + (studentgrade.pattend * 1 / studentgrade.attendance * 100 / 4 / 3) + (studentgrade.pchar * 1 / studentgrade.character * 100 / 4 / 3) +(studentgrade.mexam * 1 / studentgrade.midterm * 100 / 4 / 3) + 
+                    (studentgrade.mactive * 1  / studentgrade.activities * 100 / 4 / 3) + (studentgrade.mattend * 1 / studentgrade.attendance * 100 / 4 / 3) + (studentgrade.mchar * 1 / studentgrade.character * 100 / 4 / 3) + 
+                    (studentgrade.fexam * 1 / studentgrade.finals * 100 / 4 / 3) + (studentgrade.factive * 1  / studentgrade.activities * 100 / 4 / 3) + 
+                    (studentgrade.fattend * 1 / studentgrade.attendance * 100 / 4 / 3) + (studentgrade.fchar * 1 / studentgrade.character * 100 / 4 / 3) <=74" class="text-danger">Remarks: Failed</h3>
+
+              </div>
+            </div>
+        
+        </section>
+    </div>
+    
+    <script>
+           
+            </script>
+    <div class="modal fade" id="sub" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+
+                <div class="col-lg-6 text-center">
+                    <label>Select Class</label>
+                    <select ng-model="setset.subject" 
+                      ng-change="select1()" 
+                      class="form-control" 
+                      ng-options="select.subject as select.subject for select in select | orderBy : 'subject'">
+                      <option selected disabled>Select Section</option>  
+                      </select>
+                </div>
+                <div class="col-lg-6 text-center">
+                      <label>Select Section</label>
+                      <select ng-model="setset.section" 
+                      ng-change="select0()" 
+                      class="form-control" 
+                      ng-options="select.section as select.section for select in select | orderBy:'section'">
+                      <option selected disabled>Select Section</option>  
+                      </select>
+        
+                  </div>
+                  <br>
+                
+            </div>
+            
+            <div class="modal-body text-center">    
+                <label>
+                    Course
+                  </label>
+                  <input type="text" class="form-control" placeholder="Enter Course" ng-model="setset.course">
+              </button>
+        
+          </div>
+            <div class="modal-footer">
+                <button type="button" ng-click="set()" class="btn btn-primary" >Set</button>
+              <button type="button" ng-click="" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="showmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                
+                </button>
+              </div>
+              <div class="modal-body text-center">    
+                <br><br><br>
+                <div class="container text-danger">
+                <h2>Warning set your subject, course and section!!! Click the "Set" button and fill the form.</h2>
+              </div>
+              <br><br><br>
+          
+            </div>
+              <div class="modal-footer">
+                  <button type="button" data-toggle="modal" data-target="#sub" class="btn btn-primary" data-dismiss="modal">Set</button>
+                <button type="button" ng-click="" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>

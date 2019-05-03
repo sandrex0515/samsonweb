@@ -1,0 +1,116 @@
+<div class="main-content">
+        <section class="section">
+          <h1 class="section-header">
+            <div>Announcement</div>
+          </h1>
+   
+         
+    
+    
+          <div class="row bg-light" ng-if="fetchannounce.status">
+            <div class="col-lg-6 bg-white" style="text-transform: uppercase" ng-repeat="(k,v) in fetchannounce track by $index">
+              <hr>
+              <h4>Date: <h5 class="text-info">{{v.date}}</h5> </h4>
+              <hr>
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Who</th>
+                          <th class="text-danger">{{v.who}} </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">what</th>
+                        <th>{{v.what}} </th>
+      
+                      </tr>
+                      <tr>
+                          <th scope="row">where</th>
+                          <th class="text-warning">{{v.whiri}} </th>
+      
+                        </tr>
+                        <tr>
+                            <th scope="row">When</th>
+                            <th class="text-success">{{v.whin}} </th>
+      
+                          </tr>
+                
+                    </tbody>
+                  </table>
+       
+       
+            </div>
+      
+          </div>
+        
+        </section>
+    </div>
+    
+    <script>
+           
+            </script>
+    
+    
+    <div class="modal fade" id="showmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            
+            </button>
+          </div>
+          <div class="modal-body text-center">    
+            <br><br><br>
+            <div class="container text-danger">
+            <h2>Warning set your subject, course and section!!! Click the "Set" button and fill the form.</h2>
+          </div>
+          <br><br><br>
+      
+        </div>
+          <div class="modal-footer">
+              <button type="button" data-toggle="modal" data-target="#sub" class="btn btn-primary" data-dismiss="modal">Set</button>
+            <button type="button" ng-click="" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+        
+    <div class="modal fade" id="sub" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+
+                <div class="col-lg-6 text-center">
+                    <label>Select Class</label>
+                    <select ng-model="setset.subject" 
+                      ng-change="select1()" 
+                      class="form-control" 
+                      ng-options="select.subject as select.subject for select in select | orderBy : 'subject'">
+                      <option selected disabled>Select Section</option>  
+                      </select>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <label>Section</label>
+                  <input type="text" ng-model="setset.section" class="form-control" placeholder="Section">
+        
+                  </div>
+                  <br>
+                
+            </div>
+            
+            <div class="modal-body text-center">    
+                <label>
+                    Course
+                  </label>
+                  <input type="text" class="form-control" placeholder="Enter Course" ng-model="setset.course">
+              </button>
+        
+          </div>
+            <div class="modal-footer">
+                <button type="button" ng-click="set()" class="btn btn-primary" >Set</button>
+              <button type="button" ng-click="" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+            

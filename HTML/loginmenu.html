@@ -1,0 +1,420 @@
+<html>
+    <head>
+        <title>Samson College of Science and Technology</title>
+ <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+ <script src="../jquery.slim.min.js"></script>
+ <script src="../jquery.min.js"></script>
+ 
+ 
+ 
+        <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"> </script> -->
+        <link rel="stylesheet" href="../css/style2.css">
+        <link rel="stylesheet" href="../css/font-awesome-4.7.0/css/font-awesome.min.css">
+        <style>
+        html,body{
+            height: 100%;
+        }
+        input[type="date"]:before {
+    content: attr(placeholder) !important;
+    color: #aaa;
+    margin-right: 0.5em;
+  }
+  input[type="date"]:focus:before,
+  input[type="date"]:valid:before {
+    content: "";
+  }
+        </style>
+    </head>
+    <body>
+
+
+
+            <div class="container">
+                <br>
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h1>WELCOME</h1>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:5%;">
+                    <div class="col-lg-4 text-center" >
+                        <img src="../media/26-512.png" class="img-thumnail" style="border-radius: 150px;height: 200px;width: 200px">
+                        <h1>Student</h1>
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#loginstudent">Login</button>
+                        <br>
+                    </div>
+       
+                    <div class="col-lg-4 text-center">
+                            <img src="../media/25cc59bb9d.png" class="img-thumnail" style="border-radius: 150px;height: 200px;width: 200px">
+                            <h1>Teacher</h1>
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#loginteacher">Login</button>
+                            <br>
+                        </div>
+              
+                        <div class="col-lg-4 text-center">
+                                <img src="../media/User_Gear_Cog_Configure_Control_Manage_Management-512.png" class="img-thumnail" style="border-radius: 150px;height: 200px;width: 200px">
+                                <h1>Admin</h1>
+                                <button class="btn btn-primary" data-toggle="modal" data-target="#loginadmin">Login</button>
+                            </div>
+                </div>
+            </div>
+
+
+
+
+
+            <div class="modal fade" id="loginstudent" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content bg-dark" style="margin-top:25%;">
+                   <div class="text-right text-light" data-dismiss="modal" style="margin:20px;cursor:pointer"><i class="fa fa-close fa-2x" aria="aria-hidden"></i></div>
+                    <div class="modal-body text-center">
+                      <h1 class="text-light">STUDENT LOGIN</h1>
+                      <br>
+                      <div class="container">
+                            <div class="container">
+
+                                    <div class="container">
+
+                      <input class="form-control bg-dark text-light" type="text" id="studentid" placeholder="ID"><br>
+                      <input class="form-control bg-dark text-light" type="password" id="studentpass" placeholder="Password">
+                      <div id="div-message" class="text-danger" align="center"></div>
+
+                      <br>
+                      <button type="button" class="btn btn-primary" onclick="loginstudent()">Login</button>
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#enroll" data-dismiss="modal">Enroll</button>
+                                        <br><br>
+                      <a class="text-primary">Forgot your password?</a>
+</div>
+</div>
+</div>
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+              
+
+              <div class="modal fade" id="loginteacher" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content bg-dark" style="margin-top:25%;">
+                       <div class="text-right text-light" data-dismiss="modal" style="margin:20px;cursor:pointer"><i class="fa fa-close fa-2x" aria="aria-hidden"></i></div>
+                        <div class="modal-body text-center">
+                          <h1 class="text-light">TEACHER LOGIN</h1>
+                          <br>
+                          <div class="container">
+                                <div class="container">
+    
+                                        <div class="container">
+    
+                          <input class="form-control bg-dark text-light" type="text" id="teacherid" placeholder="ID"><br>
+                          <input class="form-control bg-dark text-light" type="password" id="teacherpass" placeholder="Password">
+                          <div id="div-message11" class="text-danger" align="center"></div>
+    
+                          <br>
+                          <button type="button" class="btn btn-primary" onclick="loginteacher()">Login</button>
+                                            <br><br>
+                          <a class="text-primary">Forgot your password?</a>
+    </div>
+    </div>
+    </div>
+                        </div>
+                        
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="modal fade" id="loginadmin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content bg-dark" style="margin-top:25%;">
+                           <div class="text-right text-light" data-dismiss="modal" style="margin:20px;cursor:pointer"><i class="fa fa-close fa-2x" aria="aria-hidden"></i></div>
+                            <div class="modal-body text-center">
+                              <h1 class="text-light">ADMIN LOGIN</h1>
+                              <br>
+                              <div class="container">
+                                    <div class="container">
+        
+                                            <div class="container">
+        
+                              <input class="form-control bg-dark text-light" type="text" id="adminid" placeholder="ID"><br>
+                              <input class="form-control bg-dark text-light" type="password" id="adminpass" placeholder="Password">
+                              <div id="div-message3" class="text-danger" align="center"></div>
+        
+                              <br>
+                              <button type="button" class="btn btn-primary" onclick="loginadmin()">Login</button>
+                                                <br><br>
+                              <a class="text-primary">Forgot your password?</a>
+        </div>
+        </div>
+        </div>
+                            </div>
+                            
+                          </div>
+                        </div>
+                      </div>
+
+
+                      <div class="modal fade" id="enroll" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg" role="document" style="max-width: 1180px;overflow-y:auto">
+                              <div class="modal-content bg-dark " style="margin-top:-10%">
+                               <div class="text-right text-light" data-dismiss="modal" style="margin:20px;cursor:pointer"><i class="fa fa-close fa-2x" aria="aria-hidden"></i></div>
+                                <div class="modal-body text-center" style="overflow-y: auto;">
+                                    <br>
+                                  <h1 class="text-light">FORM</h1>
+                                  <br>
+                                  <div class="container">
+                                        <div class="container">
+            
+                                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                  <input class="form-control bg-dark text-light" style="margin: 10px;" type="text" id="id" placeholder="Student ID">
+                                  <input class="form-control bg-dark text-light" style="margin: 10px;" type="password" id="pass" placeholder="Password">
+                                  <input class="form-control bg-dark text-light" style="margin: 10px;" type="text" id="name" placeholder="Name">
+                                  <input class="form-control bg-dark text-light" style="margin: 10px;" type="date" id="birth" placeholder="Date of Birth" max="2999-12-31">
+                                  <select class="form-control bg-dark text-light" style="margin: 10px;" id="gender" placeholder="Gender">
+                                      <option selected disabled class="">Select Gender</option>
+                                      <option class="text-light">Male</option>
+                                      <option class="text-light">Female</option>
+                                  </select>
+                                  <input class="form-control bg-dark text-light" style="margin: 10px;" type="text" id="peradd" placeholder="Pernament Address">
+                                  <input class="form-control bg-dark text-light" style="margin: 10px;" type="text" id="add" placeholder="Address">
+                                  <input class="form-control bg-dark text-light" style="margin: 10px;" type="number" id="con" placeholder="Contact">
+                                  <input class="form-control bg-dark text-light" style="margin: 10px;" type="text" id="prov" placeholder="Province">
+                                </div>
+                                
+                                <div class="col-lg-6">
+                                
+                                            <input class="form-control bg-dark text-light" style="margin: 3px;margin-left: 10px;" type="text" id="h" placeholder="Height (Sample 5.7 ft)">
+                                            <input class="form-control bg-dark text-light" style="margin: 3px;margin-left: 10px;" type="text" id="w" placeholder="Weigth (Sample 63 kg)">
+
+                                   
+                                        <input class="form-control bg-dark text-light" style="margin: 10px;" type="text" id="parentname" placeholder="Guardian/Parent">
+                                        <input class="form-control bg-dark text-light" style="margin: 10px;" type="text" id="parentocu" placeholder="Occupation">
+                                        <input class="form-control bg-dark text-light" style="margin: 10px;" type="text" id="parentcon" placeholder="Guardian/Parent Contact">
+                                        <input class="form-control bg-dark text-light" style="margin: 10px;" type="text" id="parentadd" placeholder="Guardian/Parent Address">
+                                        <hr style="color:#fff">
+                                        <label class="text-light"> - Person to contact in case of emergency - </label>
+                                        <input class="form-control bg-dark text-light" style="margin: 10px;" type="text" id="emername" placeholder=" Name">
+                                        <input class="form-control bg-dark text-light" style="margin: 10px;" type="text" id="emeradd" placeholder=" Address">
+                                        <input class="form-control bg-dark text-light" style="margin: 10px;" type="text" id="emercon" placeholder=" Contact">
+                                </div>
+                            </div>
+
+                                  <div id="div-message0" class="text-danger" align="center"></div>
+            
+                                  
+                                  <button type="button" class="btn btn-primary" onclick="enroll()">Submit</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            </div>
+            </div>
+            </div>
+                                </div>
+                                
+                              </div>
+                            </div>
+                          </div>
+
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> -->
+        <script src="../bootstrap/js/bootstrap.min.js"></script>
+        <script src="../popper.min.js"></script>
+        <script>
+
+$(document).ready(function(){   
+        checksession();
+
+        $('input').iCheck({
+            checkboxClass: 'icheckbox_flat-aero',
+            radioClass: 'iradio_flat-aero'
+        });
+
+        $("#email, #pass, #login").on('keypress', function( event ) {
+            if ( event.which == 13 ) {
+                
+                
+            }         
+        });
+    });
+
+    function checksession(){
+      $.ajax('../php/FUNCTIONS/session.php', {
+            type: "POST",
+            statusCode: {
+                404: function(response){
+                            //do nothing
+                        }
+                    },
+                    success: function(data){
+                      location.replace('../index.html');
+                    }
+                });
+    }
+
+
+        function loginstudent(){
+        var error = 0;
+        var empid = $('#studentid').val();
+        var pass = $('#studentpass').val();
+
+        if(empid.replace(/\s/g,'') == "" || pass.replace(/\s/g,'') == ""){
+            $('#div-message').empty().show().append("Incorrect ID and/or Password");
+
+            setTimeout(function(){
+                $('#div-message').empty().hide();
+            }, 5000);
+            window.open('../php/FUNCTIONS/register.php');
+        }
+        else {
+            $.ajax('../php/FUNCTIONS/auth.php', {
+                type: "POST",
+                data: { email : empid, password : pass },
+                statusCode: {
+                    404: function(response){
+                        $('#div-message').empty().show().append("Incorrect Student ID and/or Password");
+
+                        setTimeout(function(){
+                            $('#div-message').empty().hide();
+                        }, 5000);
+                    }
+                },
+                success: function(data){
+                  alert('Welcome');
+                  window.location.href = '../student/page';
+                }
+            });
+        }
+
+    }
+    function loginteacher(){
+        var error = 0;
+        var empid = $('#teacherid').val();
+        var pass = $('#teacherpass').val();
+
+        if(empid.replace(/\s/g,'') == "" || pass.replace(/\s/g,'') == ""){
+            $('#div-message11').empty().show().append("Incorrect ID and/or Password");
+
+            setTimeout(function(){
+                $('#div-message11').empty().hide();
+            }, 5000);
+        }
+        else {
+            $.ajax('../php/FUNCTIONS/auth2.php', {
+                type: "POST",
+                data: { email : empid, password : pass },
+                statusCode: {
+                    404: function(response){
+                        $('#div-message11').empty().show().append("Incorrect ID and/or Password");
+
+                        setTimeout(function(){
+                            $('#div-message11').empty().hide();
+                        }, 5000);
+                    }
+                },
+                success: function(data){
+                  alert('Welcome');
+                  window.location.href = '../teacher/page';
+                }
+            });
+        }
+
+    }
+    function loginadmin(){
+        var error = 0;
+        var empid = $('#adminid').val();
+        var pass = $('#adminpass').val();
+
+        if(empid.replace(/\s/g,'') == "" || pass.replace(/\s/g,'') == ""){
+            $('#div-message3').empty().show().append("ID or Password is empty");
+
+            setTimeout(function(){
+                $('#div-message3').empty().hide();
+            }, 5000);
+        }
+        else {
+            $.ajax('../php/FUNCTIONS/auth3.php', {
+                type: "POST",
+                data: { email : empid, password : pass },
+                statusCode: {
+                    404: function(response){
+                        $('#div-message3').empty().show().append("Incorrect Student ID and/or Password");
+
+                        setTimeout(function(){
+                            $('#div-message3').empty().hide();
+                        }, 5000);
+                    }
+                },
+                success: function(data){
+                  alert('Welcome');
+                  window.location.href = '../admin/page';
+                }
+            });
+        }
+
+    }
+     
+    function enroll (){
+        var error = 0;
+        var empid = $('#id').val();
+        var pass = $('#pass').val();
+        var name = $('#name').val();
+        var birth = $('#birth').val();
+        var peradd = $('#peradd').val();
+        var add = $('#add').val();
+        var con = $('#con').val();
+        var prov = $('#prov').val();
+        var parentname = $('#parentname').val();
+        var parentocu = $('#parentocu').val();
+        var parentcon = $('#parentcon').val();
+        var parentadd = $('#parentadd').val();
+        var emername = $('#emername').val();
+        var emeradd = $('#emeradd').val();
+        var emercon = $('#emercon').val();
+        var w = $('#w').val();
+        var h = $('#h').val();
+        
+
+        if(empid.replace(/\s/g,'') == "" || pass.replace(/\s/g,'') == "" 
+        || name.replace(/\s/g,'') == "" || birth.replace(/\s/g,'') == "" 
+        || peradd.replace(/\s/g,'') == "" || add.replace(/\s/g,'') == "" 
+        || con.replace(/\s/g,'') == "" || prov.replace(/\s/g,'') == "" 
+        || parentname.replace(/\s/g,'') == "" || parentocu.replace(/\s/g,'') == "" 
+        || parentcon.replace(/\s/g,'') == "" || parentadd.replace(/\s/g,'') == "" 
+        || emeradd.replace(/\s/g,'') == "" || emername.replace(/\s/g,'') == "" 
+        || emercon.replace(/\s/g,'') == "" || w.replace(/\s/g,'') == "" || h.replace(/\s/g,'') == "" ){
+            $('#div-message0').empty().show().append("All fields is required");
+
+            setTimeout(function(){
+                $('#div-message0').empty().hide();
+            }, 5000);
+        }
+        else {
+            $.ajax('../php/FUNCTIONS/register.php', {
+                type: "POST",
+                data: { email : empid, password : pass, name: name, birth: birth, peradd: peradd, address: add, 
+                contact: con, province : prov, parentname: parentname, parentocu: parentocu, 
+                parentcon: parentcon, emername: emername, emercon: emercon, w: w, h: h
+                },
+                statusCode: {
+                    404: function(response){
+                        $('#div-message0').empty().show().append("Student ID or Name is Already Taken");
+
+                        setTimeout(function(){
+                            $('#div-message0').empty().hide();
+                        }, 5000);
+                    }
+                },
+                success: function(data){
+                  alert('Congratulations you have successfully enrolled. Kindly print the PDF file and pass it to Mr. Eugune Abayon. The PDF file will automatically download after pressing ok button, kindly login now and set your subject, course and section.');
+                    $('#enroll').modal('hide'); 
+                }
+            });
+        }
+
+    }
+        </script>
+        
+    </body>
+</html>

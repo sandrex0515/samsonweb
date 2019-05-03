@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" name="viewport">
+  <title>Dashboard</title>
+
+  <link rel="stylesheet" href="../dist/modules/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../dist/modules/ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="../dist/modules/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css">
+  <link rel="stylesheet" href="../../style/font-awesome-4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../dist/modules/summernote/summernote-lite.css">
+  <link rel="stylesheet" href="../dist/modules/flag-icon-css/css/flag-icon.min.css">
+  <link rel="stylesheet" href="../dist/css/demo.css">
+  <link rel="stylesheet" href="../dist/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet">
+</head>
+
+<body>
+  <div id="app">
+    <div class="main-wrapper">
+      <div class="navbar-bg"></div>
+      
+      <div class="main-sidebar">
+        <aside id="sidebar-wrapper">
+         
+          <div class="sidebar-user">
+            <div class="sidebar-user-picture">
+              <img alt="image" src="../../media/49161279_2166964706687471_7974348225228308480_n.jpg">
+            </div>
+            <div class="sidebar-user-details">
+              <div class="user-name">Sandrex Cabrales</div>
+              <div class="user-role">
+                Administrator
+              </div>
+            </div>
+          </div>
+          <ul class="sidebar-menu">
+            <li class="menu-header">Dashboard</li>
+            <li class="active">
+              <a href="#/"><i class="ion ion-speedometer"></i><span>Dashboard</span></a>
+            </li>
+
+            <li class="menu-header">Components</li>
+           
+           
+            <li>
+              <a href="#" class="has-dropdown"><i class="ion ion-ios-albums-outline"></i><span>Logs</span></a>
+              <ul class="menu-dropdown">
+                <li><a href="#/process"><i class="ion ion-ios-circle-outline sample"></i>Student Logs</a></li>
+                <li><a href="#/fordelivery"><i class="ion ion-ios-circle-outline sample3"></i>Teacher Logs</a></li>
+                <li><a href="#/delivered"><i class="ion ion-ios-circle-outline sample4"></i>Admin Logs</a></li>
+              </ul>
+            </li>
+         
+            
+            <li>
+              <a href="#" class="has-dropdown"><i class="ion ion-ios-albums-outline"></i><span>Table</span></a>
+              <ul class="menu-dropdown">
+                <li><a href="#/productbl"><i class="ion ion-ios-circle-outline sample"></i>User Table</a></li>
+                <li><a href="#/stock"><i class="ion ion-ios-circle-outline sample3" ></i>Teacher Table</a></li>
+
+              </ul>
+            </li> 
+            <li>
+                <a href="#" class="has-dropdown"><i class="ion ion-ios-albums-outline"></i><span>Navigation</span></a>
+                <ul class="menu-dropdown">
+                  <li><a href="../../HTML/categorymain.html"><i class="ion ion-ios-circle-outline"></i>Slider</a></li>
+                  <li><a href="../../HTML/categorysub.html"><i class="ion ion-ios-circle-outline"></i>About us</a></li>
+                  <li><a href="../../HTML/categorysub.html"><i class="ion ion-ios-circle-outline"></i>Gallery</a></li>
+                  <li><a href="../../HTML/categorysub.html"><i class="ion ion-ios-circle-outline"></i>Contact</a></li>
+
+                  
+                </ul>
+              </li>   
+            <!-- <li>
+              <a href="#" class="has-dropdown"><i class="ion ion-ios-albums-outline"></i><span>Product Analytics</span></a>
+              <ul class="menu-dropdown">
+                <li><a href="#"><i class="ion ion-ios-circle-outline"></i>Top Search Product</a></li>
+                <li><a href="#"><i class="ion ion-ios-circle-outline"></i>Top Selling Product</a></li>
+                <li><a href="#"><i class="ion ion-ios-circle-outline"></i>Low Sales Product</a></li>
+                
+              </ul>
+            </li> -->
+        
+            
+            
+        
+            <li> 
+              <!-- <a href="#"><i class="ion ion-stats-bars"></i><span>Careers</span></a> -->
+            </li>
+            
+
+       
+          
+        </aside>
+      </div>
+      <div ng-view=""> </div>
+      <!-- <footer class="main-footer">
+        <div class="footer-left"> -->
+       
+          <!-- Copyright &copy; 2019 <div class="bullet"></div> Design By <a href="http://sandrexsaveurl.ga/">Sandrex Cabrales</a> -->
+        <!-- </div>
+        <div class="footer-right"></div>
+      </footer> -->
+    </div>
+  </div>
+
+  <script src="../dist/modules/jquery.min.js"></script>
+  <script src="../dist/modules/popper.js"></script>
+  <script src="../dist/modules/tooltip.js"></script>
+  <script src="../dist/modules/bootstrap/js/bootstrap.min.js"></script>
+  <script src="../dist/modules/nicescroll/jquery.nicescroll.min.js"></script>
+  <script src="../dist/modules/scroll-up-bar/dist/scroll-up-bar.min.js"></script>
+  <script src="../dist/js/sa-functions.js"></script>
+  <script src="https://unpkg.com/ionicons@4.5.5/dist/ionicons.js"></script>
+  <script src="../../angular/angular-file-upload.min.js"></script>
+  <script src="../../angular/directive.js"></script>
+  <script src="../dist/modules/chart.min.js"></script>
+  <script src="../dist/modules/summernote/summernote-lite.js"></script>
+
+  <script src="../dist/js/scripts.js"></script>
+  <script src="../dist/js/custom.js"></script>
+  <script src="../dist/js/demo.js"></script>
+  <script src="../../angular/angular.min.js"></script>
+  <script src="../../angular/angular-route.min.js"></script>
+  <script src="../../js/moduleadmin.js"></script>
+  <script src="../../js/factory/sessionfactory.js"></script>
+  <script src="../../js/factory/adminfactory.js"></script>
+  <script src="../../js/controllers/analytics.js"></script>
+</body>
+</html>

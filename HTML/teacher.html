@@ -1,0 +1,155 @@
+
+<style>
+    .sample9{
+      background-color: #574B90;
+      border-radius: 120px;
+      -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, .13);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, .13);
+    }
+    </style>
+<div class="main-content">
+    <section class="section">
+      <h1 class="section-header">
+        <div>Announcement</div>
+      </h1>
+
+     
+<div class="row">
+    <div class="col-lg-6">
+        <input type="text" class="form-control" ng-model="filter.searchString" ng-change="select3()" placeholder="Search WHAT...">
+    </div>
+    <div class="col-lg-6">
+        <button class="btn btn-primary" data-toggle="modal" data-target="#announce"><i class="fa fa-plus-square-o" aria-hidden="true"></i> New Announcement</button>
+    </div>
+</div>
+<br>
+    <div class="row bg-light" ng-if="fetchannounce.status">
+      <div class="col-lg-6 bg-white" style="text-transform: uppercase" ng-repeat="(k,v) in fetchannounce track by $index">
+        <hr>
+        <h4>Date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-pencil text-success" ng-click="editan(v)" style="cursor: pointer" aria-hidden="true"></i>&nbsp;<i class="fa fa-close text-danger" ng-click="deletean()" style="cursor: pointer" aria-hidden="true"></i> <h5 class="text-info">{{v.date}}</h5> </h4>
+        <hr>
+          <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Who</th>
+                    <th class="text-danger">{{v.who}} </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">what</th>
+                  <th>{{v.what}} </th>
+
+                </tr>
+                <tr>
+                    <th scope="row">where</th>
+                    <th class="text-warning">{{v.whiri}} </th>
+
+                  </tr>
+                  <tr>
+                      <th scope="row">When</th>
+                      <th class="text-success">{{v.whin}} </th>
+
+                    </tr>
+          
+              </tbody>
+            </table>
+ 
+ 
+      </div>
+
+    </div>
+   
+    
+    </section>
+</div>
+
+<script>
+       
+        </script>
+
+
+<div class="modal fade" id="showmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        
+        </button>
+      </div>
+      <div class="modal-body text-center">    
+        <br><br><br>
+        <div class="container text-danger">
+        <h2>Warning set your subject, course and section!!! Click the "Set" button and fill the form.</h2>
+      </div>
+      <br><br><br>
+  
+    </div>
+      <div class="modal-footer">
+          <button type="button" data-toggle="modal" data-target="#sub" class="btn btn-primary" data-dismiss="modal">Set</button>
+        <button type="button" ng-click="" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+    
+<div class="modal fade" id="sub" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+            <div class="col-lg-6 text-center">
+                <label>Select Class</label>
+                <select ng-model="setset.subject" 
+                  ng-change="select1()" 
+                  class="form-control" 
+                  ng-options="select.subject as select.subject for select in select | orderBy : 'subject'">
+                  <option selected disabled>Select Section</option>  
+                  </select>
+            </div>
+            <div class="col-lg-6 text-center">
+                  <label>Select Section</label>
+                  <select ng-model="setset.section" 
+                  ng-change="select0()" 
+                  class="form-control" 
+                  ng-options="select.section as select.section for select in select | orderBy:'section'">
+                  <option selected disabled>Select Section</option>  
+                  </select>
+    
+              </div>
+          </button>
+        </div>
+        <div class="modal-body text-center">    
+    
+    
+      </div>
+        <div class="modal-footer">
+            <button type="button" ng-click="set()" class="btn btn-primary" >Set</button>
+          <button type="button" ng-click="" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+            
+<div class="modal fade" id="announce" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+
+        </div>
+        <div class="modal-body text-center">    
+            <label>WHO</label>
+            <input type="text" class="form-control bg-dark text-light" ng-model="announcement.who" placeholder="WHO"><br>
+            <label>WHAT</label>
+            <input type="text" class="form-control bg-dark text-light" ng-model="announcement.what" placeholder="WHAT"><br>
+            <label>WHERE</label>
+            <input type="text" class="form-control bg-dark text-light" ng-model="announcement.where" placeholder="WHERE"><br>
+            <label>WHEN</label>
+            <input type="text" class="form-control bg-dark text-light" ng-model="announcement.when" placeholder="WHEN"><br>
+    
+      </div>
+        <div class="modal-footer">
+            <button type="button" ng-click="announce()" class="btn btn-primary"  >Announce</button>
+          <button type="button" ng-click="" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>

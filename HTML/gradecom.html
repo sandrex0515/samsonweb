@@ -1,0 +1,133 @@
+<style>
+.sample{
+    background-color: #574B90;
+  border-radius: 120px;
+  -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, .13);
+	        box-shadow: 0 10px 20px rgba(0, 0, 0, .13);
+}
+</style>
+<div class="main-content">
+    <section class="section">
+      <h1 class="section-header">
+        <div>Grade Computation</div>
+      </h1>
+      <br>
+     <div class="row">
+       <div class="col-lg-12 text-center">
+        <h3>NSTP</h3>
+        <br>
+       </div>
+       
+         <div class="col-lg-4">
+        <label>Prelim Exam Percentage</label>
+        <input type="number" class="form-control"  ng-model="grade.prelim"  placeholder="0%"><br>
+        <label>Midterm Exam Percentage</label>
+        <input type="number" class="form-control"  ng-model="grade.midterm" placeholder="0%"><br>
+        <label>Finals Exam Percentage</label>
+        <input type="number" class="form-control"  ng-model="grade.finals" placeholder="0%"><br>
+    </div>
+    <div class="col-lg-4">
+            <label>Recitation/Activities Percentage</label>
+            <input type="number" class="form-control" ng-model="grade.activities" placeholder="0%"><br>
+            <label>Attendance Percentage</label>
+
+            <input type="number" class="form-control" ng-model="grade.attendance" placeholder="0%"><br>
+            
+            <label>Character Percentage</label>
+            <input type="number" class="form-control" ng-model="grade.character" placeholder="0%"><br>
+    </div>
+    <div class="col-lg-4">
+            <!-- <label>Quiz Percentage</label> -->
+            <!-- <input type="number" class="form-control" ng-model="grade.quiz" placeholder="0%"><br> -->
+            <br>
+            <p style="font-size: 22px;">Total Percentage: {{grade.prelim + grade.quiz + grade.midterm + grade.finals + grade.activities + grade.attendance + grade.character}}%</p>
+            <p style="font-size: 24px" class="text-danger" ng-if="grade.message1">Total percentage value is less than 100%</p>
+            <p style="font-size: 24px" class="text-danger" ng-if="grade.message">All fields are required, if one of these field is not fit on your grading system kindly put 0 value</p>
+            <p style="font-size: 24px" class="text-danger" ng-if="grade.message2">Total percentage value has exceeded 100%</p>
+
+        </div>
+
+     </div>
+     <div class="row">
+         <div class="col-lg-12 text-center">
+             <button type="button" class="btn btn-primary" ng-click="setgrade()">Set Grade</button>
+         </div>
+     </div>
+     <br>
+     <hr>
+     <div class="row">
+        <div class="col-lg-12 text-center">
+         <h3>ROTC</h3>
+         <br>
+        </div>
+        
+          <div class="col-lg-4">
+         <label>Prelim Exam Percentage</label>
+         <input type="number" class="form-control"  ng-model="grade3.prelim"  placeholder="0%"><br>
+         <label>Midterm Exam Percentage</label>
+         <input type="number" class="form-control"  ng-model="grade3.midterm" placeholder="0%"><br>
+         <label>Finals Exam Percentage</label>
+         <input type="number" class="form-control"  ng-model="grade3.finals" placeholder="0%"><br>
+     </div>
+     <div class="col-lg-4">
+             <label>Recitation/Activities Percentage</label>
+             <input type="number" class="form-control" ng-model="grade3.activities" placeholder="0%"><br>
+             <label>Attendance Percentage</label>
+ 
+             <input type="number" class="form-control" ng-model="grade3.attendance" placeholder="0%"><br>
+             
+             <label>Character Percentage</label>
+             <input type="number" class="form-control" ng-model="grade3.character" placeholder="0%"><br>
+     </div>
+     <div class="col-lg-4">
+             <!-- <label>Quiz Percentage</label> -->
+             <!-- <input type="number" class="form-control" ng-model="grade.quiz" placeholder="0%"><br> -->
+             <br>
+             <p style="font-size: 22px;">Total Percentage: {{grade3.prelim + grade3.quiz + grade3.midterm + grade3.finals + grade3.activities + grade3.attendance + grade3.character}}%</p>
+             <p style="font-size: 24px" class="text-danger" ng-if="grade3.message1">Total percentage value is less than 100%</p>
+             <p style="font-size: 24px" class="text-danger" ng-if="grade3.message">All fields are required, if one of these field is not fit on your grading system kindly put 0 value</p>
+             <p style="font-size: 24px" class="text-danger" ng-if="grade3.message2">Total percentage value has exceeded 100%</p>
+ 
+         </div>
+ 
+      </div>
+      <div class="row">
+          <div class="col-lg-12 text-center">
+              <button type="button" class="btn btn-primary" ng-click="setgrade2()">Set Grade</button>
+          </div>
+      </div>
+      <br>
+
+
+   
+    </section>
+</div>
+
+<script>
+       
+        </script>
+
+
+<div class="modal fade" id="showmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        
+        </button>
+      </div>
+      <div class="modal-body text-center">    
+        <br><br><br>
+        <div class="container text-danger">
+        <h2>Warning you need to set today's Sales click the button "Set Today's Sales"</h2>
+      </div>
+      <br><br><br>
+  
+    </div>
+      <div class="modal-footer">
+          <button type="button" ng-click="settoday()" class="btn btn-primary">Set Today's Sales</button>
+        <button type="button" ng-click="" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+        

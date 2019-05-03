@@ -1,0 +1,106 @@
+<style>
+        .sample2{
+          background-color: #574B90;
+          border-radius: 120px;
+          -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, .13);
+                    box-shadow: 0 10px 20px rgba(0, 0, 0, .13);
+        }
+        </style>
+        <div class="main-content">
+                <section class="section">
+                  <h1 class="section-header">
+                    <div>Student List</div>
+                  </h1>
+                  <br>
+                  <div class="row">
+                        <div class="col-lg-3 text-center">
+                            <br><br>
+                              <input type="text" class="form-control" ng-model="filter.searchstring" ng-change="select2()" placeholder="Search name...">
+                            </div>
+                      <div class="col-lg-3 text-center">
+                          <label>Select Class</label>
+                          <select ng-model="filter.subject" 
+                            ng-change="select1()" 
+                            class="form-control" 
+                            ng-options="select.subject as select.subject for select in select | orderBy : 'subject'">
+                            <option selected disabled>Select Section</option>  
+                            </select>
+                      </div>
+                      <div class="col-lg-2 text-center">
+                            <label>Select Section</label>
+                            <select ng-model="filter.section" 
+                            ng-change="select0()" 
+                            class="form-control" 
+                            ng-options="select.section as select.section for select in select | orderBy:'section'">
+                            <option selected disabled>Select Section</option>  
+                            </select>
+              
+                        </div>
+                        <div class="col-lg-2 text-center">
+                                <br><br>
+                              <button type="button" class="btn btn-primary">Export csv</button>
+                                </div>
+
+                        <div class="col-lg-2 text-center">
+                                <br><br>
+                                <button type="button" ng-click="clear()" class="btn btn-primary">Reset</button>
+                            </div>
+                  </div>
+                  <br>
+                  <table class="table table-hover table-primary">
+                        <thead>
+                          <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Course</th>
+                            <th scope="col">Subject</th>
+                            <th scope="col">Section</th>
+                            <th scope="col">Options</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr ng-repeat="(k,v) in studlist track by $index" ng-if="studlist.status">
+                            <th scope="row">{{v.studid}}</th>
+                            <td>{{v.name}}</td>
+                            <td>{{v.course}}</td>
+                            <td>{{v.subject}}</td>
+                            <td>{{v.section}}</td>
+                            <td data-toggle="tooltip" title="Drop student"><button type="button" ng-click="drop(v)" class="btn btn-primary"><ion-icon name="thumbs-down" style="zoom:1.1"></ion-icon></button></td>
+                          </tr>
+                      
+                        </tbody>
+                      </table>
+            
+            
+               
+                </section>
+            </div>
+            
+            <script>
+                   
+                    </script>
+            
+            
+            <div class="modal fade" id="showmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    
+                    </button>
+                  </div>
+                  <div class="modal-body text-center">    
+                    <br><br><br>
+                    <div class="container text-danger">
+                    <h2>Warning you need to set today's Sales click the button "Set Today's Sales"</h2>
+                  </div>
+                  <br><br><br>
+              
+                </div>
+                  <div class="modal-footer">
+                      <button type="button" ng-click="settoday()" class="btn btn-primary">Set Today's Sales</button>
+                    <button type="button" ng-click="" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+                    
