@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Masonry Layout con CSS Grid</title>
+</head>
+<body>
+    <div class="nav-wrapper">
+        <nav class="navbar navbar-default mainmenu" data-offset-top="1" data-spy="affix">
+          <div class="container">
+            <div class="navbar-header">
+              <button class="navbar-toggle" data-target="#myNavbar" data-toggle="collapse" type="button"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand" href=""><span><img src="media/samson.png" style="height: 50px;width: 50px"></span></a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+              <ul class="nav navbar-nav" style="font-size: 20px;padding-top:15px;">
+                
+                <li class="active">
+                  <a href="#">Home</a>
+                </li>
+                <li>
+                  <a href="about.html">About us</a>
+                </li>
+                <li>
+                    <a href="#/gallery">Gallery</a>
+                  </li>
+                  <li>
+                    <a href="contacts.html">Contacts</a>
+                </li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right" style="font-size: 20px;">
+                <li ng-if="info.status">
+             <a href="teacher/page/index.html" ng-if="info.name == 'Eugene Abayon'"><button class="login-btn"  type="button"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{info.name}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;My dashboard</button></a>
+             <a href="student/page/index.html" ng-if="info.name != 'Eugene Abayon'"><button class="login-btn"  type="button"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{info.name}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;My dashboard</button></a>
+    
+                </li>
+                <li ng-if="!info.status">
+                  <a href="HTML/loader.html"><button class="login-btn"  type="button"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Login</button></a>
+                     </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+      <br>
+      <div class="modal fade" id="login-box" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button class="close" data-dismiss="modal" type="button"></button>
+              <h4 class="modal-title">
+                Modal Header
+              </h4>
+            </div>
+            <div class="modal-body">
+              <p>
+                Some text in the modal.
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-default" data-dismiss="modal" type="button">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br><br><br>
+
+    <div class="gallery" id="gallery">
+        <div class="gallery-item">
+            <div class="content"><img src="https://source.unsplash.com/random/?tech,care" alt=""></div>
+        </div>
+        <div class="gallery-item">
+            <div class="content"><img src="https://source.unsplash.com/random/?tech,studied" alt=""></div>
+        </div>
+        <div class="gallery-item">
+            <div class="content"><img src="https://source.unsplash.com/random/?tech,substance" alt=""></div>
+        </div>
+        <div class="gallery-item">
+            <div class="content"><img src="https://source.unsplash.com/random/?tech,choose" alt=""></div>
+        </div>
+        <div class="gallery-item">
+            <div class="content"><img src="https://source.unsplash.com/random/?tech,past" alt=""></div>
+        </div>
+        <div class="gallery-item">
+            <div class="content"><img src="https://source.unsplash.com/random/?tech,lamp" alt=""></div>
+        </div>
+        <div class="gallery-item">
+            <div class="content"><img src="https://source.unsplash.com/random/?tech,yet" alt=""></div>
+        </div>
+        <div class="gallery-item">
+            <div class="content"><img src="https://source.unsplash.com/random/?tech,eight" alt=""></div>
+        </div>
+        <div class="gallery-item">
+            <div class="content"><img src="https://source.unsplash.com/random/?tech,crew" alt=""></div>
+        </div>
+        <div class="gallery-item">
+            <div class="content"><img src="https://source.unsplash.com/random/?tech,event" alt=""></div>
+        </div>
+        <div class="gallery-item">
+            <div class="content"><img src="https://source.unsplash.com/random/?tech,instrument" alt=""></div>
+        </div>
+        <div class="gallery-item">
+            <div class="content"><img src="https://source.unsplash.com/random/?tech,practical" alt=""></div>
+        </div>
+        <div class="gallery-item">
+            <div class="content"><img src="https://source.unsplash.com/random/?tech,pass" alt=""></div>
+        </div>
+        <div class="gallery-item">
+            <div class="content"><img src="https://source.unsplash.com/random/?tech,bigger" alt=""></div>
+        </div>
+        <div class="gallery-item">
+            <div class="content"><img src="https://source.unsplash.com/random/?tech,number" alt=""></div>
+        </div>
+        <div class="gallery-item">
+            <div class="content"><img src="https://source.unsplash.com/random/?tech,feature" alt=""></div>
+        </div>
+        <div class="gallery-item">
+            <div class="content"><img src="https://source.unsplash.com/random/?tech,line" alt=""></div>
+        </div>
+        <div class="gallery-item">
+            <div class="content"><img src="https://source.unsplash.com/random/?tech,railroad" alt=""></div>
+        </div>
+        <div class="gallery-item">
+            <div class="content"><img src="https://source.unsplash.com/random/?tech,pride" alt=""></div>
+        </div>
+        <div class="gallery-item">
+            <div class="content"><img src="https://source.unsplash.com/random/?tech,too" alt=""></div>
+        </div>
+        <div class="gallery-item">
+            <div class="content"><img src="https://source.unsplash.com/random/?tech,bottle" alt=""></div>
+        </div>
+        <div class="gallery-item">
+            <div class="content"><img src="https://source.unsplash.com/random/?tech,base" alt=""></div>
+        </div>
+        <div class="gallery-item">
+            <div class="content"><img src="https://source.unsplash.com/random/?tech,cell" alt=""></div>
+        </div>
+        <div class="gallery-item">
+            <div class="content"><img src="https://source.unsplash.com/random/?tech,bag" alt=""></div>
+        </div>
+        <div class="gallery-item">
+            <div class="content"><img src="https://source.unsplash.com/random/?tech,card" alt=""></div>
+        </div>
+    </div>
+     
+</body>
+</html>

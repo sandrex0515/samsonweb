@@ -2,16 +2,16 @@
 require_once('connection.php');
 require_once('../../php/CLASSES/CHILDCLASS.php');
 require_once('../../fpdf/fpdf.php');
-// $data = array();
+$data = array();
 
-// foreach($_POST as $k => $v){
-//     $data[$k]=$v;
-// }
+foreach($_GET as $k => $v){
+    $data[$k]=$v;
+}
 
-$class = new childclass(NULL);
+$class = new childclass($data);
 
 
-$datax = $class->getget();
+$datax = $class->getget($data);
 
 if($datax['status']){
     foreach($datax['result'] as $kk=>$vv){
@@ -60,6 +60,16 @@ if($datax['status']){
         $section = '1st';
 
     }
+    $section1 = "";
+    if($_GET['random'] == 'NSTP 1'){
+        $section1 = '1st';
+    }else if($_GET['random'] == 'NSTP 2'){
+        $section1 = '2nd';
+    }else if ($_GET['random'] == 'ROTC'){
+        $section1 = '1st';
+    }else{
+        $section1 = '2nd';
+    }
     $pdf->Ln(-30);
     
     
@@ -72,12 +82,12 @@ if($datax['status']){
         
         $pdf->Cell(130,30,'2x2 PHOTO HERE',0,0,'C'); 
     $pdf->Ln(20);
-    $pdf->Cell(30,30,'STUDENT NO: '.$vv['studid'].'                                                                       '.$section.' Sem/Summer, SY ',0,true);
+    $pdf->Cell(30,30,'STUDENT NO: '.$vv['studid'].'                                                                       '.$section1.' Sem/Summer, SY ',0,true);
     $pdf->Cell(190,-10,'Fullname:          '.$vv['name'].'                 |    Heigth: '.$vv['h'].'                     |    Weigth: '.$vv['w'].'   ','LRTB',0,'L');
     $pdf->Ln(0);
     $brtih1 = strtotime($vv['birthday']);
     $birth = date('F j, Y', $brtih1);
-    $pdf->Cell(190,10,'Date of birth:     '.$birth.'      |     School/Branch:   Cubao         |      Course & Section:  '.$vv['course'].' '.$vv['section'].'    ',"LRB",0,"L");
+    $pdf->Cell(190,10,'Date of birth:     '.$birth.'      |     School/Branch:   Cubao         |      Course & Section:  '.$vv['course'].'    ',"LRB",0,"L");
     $pdf->Ln(10);
     $pdf->Cell(190,10,'Gender:             '.$vv['gender'].'                   |     Religion:   '.$vv['religion'].'                 |      Special Skills: '.$vv['skills'].'    ','LRB',0,'L');
     $pdf->Ln(10);
@@ -114,7 +124,7 @@ if($datax['status']){
         $pdf->Cell(130,30,'2x2 PHOTO HERE',0,0,'C');
     
         $pdf->Ln(20);
-        $pdf->Cell(30,30,'STUDENT NO: '.$vv['studid'].'                                                                       '.$section.' Sem/Summer, SY ',0,true);        $pdf->Cell(190,-10,'Fullname:          '.$vv['name'].'                 |    Heigth: '.$vv['h'].'                     |    Weigth: '.$vv['w'].'   ','LRTB',0,'L');
+        $pdf->Cell(30,30,'STUDENT NO: '.$vv['studid'].'                                                                       '.$section1.' Sem/Summer, SY ',0,true);        $pdf->Cell(190,-10,'Fullname:          '.$vv['name'].'                 |    Heigth: '.$vv['h'].'                     |    Weigth: '.$vv['w'].'   ','LRTB',0,'L');
         $pdf->Ln(0);
         $birth = date('F j, Y', $vv['birthday']);
         $pdf->Cell(190,10,'Date of birth:     '.$birth.'      |     School/Branch:   Cubao         |      Course & Section:  '.$vv['course'].' '.$vv['section'].'    ',"LRB",0,"L");
@@ -156,7 +166,7 @@ if($datax['status']){
             
             $pdf->Cell(130,30,'2x2 PHOTO HERE',0,0,'C'); 
         $pdf->Ln(20);
-        $pdf->Cell(30,30,'STUDENT NO: '.$vv['studid'].'                                                                       '.$section.' Sem/Summer, SY ',0,true);
+        $pdf->Cell(30,30,'STUDENT NO: '.$vv['studid'].'                                                                       '.$section1.' Sem/Summer, SY ',0,true);
         $pdf->Cell(190,-10,'Fullname:          '.$vv['name'].'                 |    Heigth: '.$vv['h'].'                     |    Weigth: '.$vv['w'].'   ','LRTB',0,'L');
         $pdf->Ln(0);
         $birth = date('F j, Y', $vv['birthday']);

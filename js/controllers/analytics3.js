@@ -135,6 +135,11 @@ function select(){
         
   }
   $scope.set = function(){
+    if($scope.setset.section == 'Am'){
+      $scope.setset.section = '11A1';
+    }else{
+      $scope.setset.section = '12A1';
+    }
       var filter = {
           pk : $scope.pk,
           sub : $scope.setset.subject,
@@ -148,8 +153,9 @@ function select(){
     }
       var promise = adminFactory.setset(filter);
           promise.then(function(data){
-              alert('Success');
+              alert('Success! Print and pass the application form to NSTP coordination Mr. Eugune Abayon');
               $('#sub').modal('hide'); 
+              window.open('http://localhost/sites/grading/php/FUNCTIONS/registerpdf.php?name='+ $scope.pk + '&random=' + $scope.setset.subject)
 
           })
           .then(null, function(data){

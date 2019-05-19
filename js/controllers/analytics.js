@@ -14,11 +14,13 @@ $scope.getlastyear = {};
 $scope.year = {};
 $scope.todaysales = {};
 $scope.info = {};
+$scope.uploads = {};
 analytics();
 analytics2();
 analytics3();
 todaysales();
 pending();
+upload();
 // showmodal();
 init();
 
@@ -269,6 +271,17 @@ function destroy(){
     if($scope.info.status == false){
         window.location.href = '../../index.html';
     }
+}
+function upload() {
+  var promise = adminFactory.uploads();
+  promise.then(function (data) {
+          $scope.uploads = data.data.result;  
+          $scope.uploads.status = true;
+  })
+      .then(null, function (data) {
+        $scope.uploads.status = false;
+
+      });
 }
 function init() {
     var promise = sessionFactory.session();

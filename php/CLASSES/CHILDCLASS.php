@@ -116,7 +116,7 @@ EOT;
             parentocu,
             peraddress,
             provice
-            from tbluser where studid = '$this->email' AND password = '$this->password'
+            from tbluser where studid = '$this->email' AND password = '$pass'
 EOT;
         return ClassParent::get($sql);
     }
@@ -144,6 +144,21 @@ EOT;
 EOT;
             return ClassParent::get($sql);
         }
+        public function get_info9($pk){
+            $sql = <<<EOT
+            with a as(
+                select name from tblteacher where name='$pk'
+
+            ), b as (            
+                
+                select name from tbladmin where name='$pk'
+
+            )
+            select name from tbluser
+                where tbluser.name='$pk'
+EOT;
+            return ClassParent::get($sql);
+        }
         public function adminlogin($data){
             foreach($data as $k=>$v){
                 $this->$k = pg_escape_string(strip_tags(trim($v)));
@@ -166,6 +181,11 @@ EOT;
             foreach($data as $k=>$v){
                 $this->$k = pg_escape_string(strip_tags(trim($v)));
             }
+            if($this->activities == 'NaN'){
+                $this->activities = 0;
+            }else{
+                $this->activities = $this->activities;
+            }
             $sql = <<<EOT
             insert into setgrade
             (
@@ -173,6 +193,7 @@ EOT;
             prelim, 
             midterm, 
             finals, 
+            px,
             activities, 
             attendance, 
             character, 
@@ -184,6 +205,7 @@ EOT;
             $this->prelim,
             $this->midterm,
             $this->finals,
+            $this->px,
             $this->activities,
             $this->attendance,
             $this->character,
@@ -364,11 +386,15 @@ EOT;
             if($this->char3 == 'NaN'){
                 $this->char3 = pchar;
             }
+            if($this->px == 'NaN'){
+                $this->px = px;
+            }
             $sql =<<<EOT
                 update grade set pattend = $this->total, mattend = $this->total2, 
                 fattend = $this->total3, pexam = $this->pgrade, mexam = $this->mgrade, fexam =$this->fgrade, 
                 pactive = $this->active, mactive = $this->active2, factive = $this->active3,
                 pchar = $this->char, mchar = $this->char2, fchar = $this->char3,
+                px = $this->px,
                 date = now() where name = '$this->name'
 EOT;
             return ClassParent::insert($sql);
@@ -420,7 +446,7 @@ EOT;
             }
             
             $sql = <<<EOT
-                select name,$pexam,$pactive,$pattend,$pchar from grade where status = 'pending'
+                select name,$pexam,$pactive,$pattend,$pchar,px from grade where status = 'pending'
                 $where1
                 $where2
 EOT;
@@ -431,7 +457,7 @@ EOT;
                 $this->$k = pg_escape_string(strip_tags(trim($v)));
             }
             $sql = <<<EOT
-                update tbluser set status = 'Dropped', remarks = 'Dropped' where name = '$this->name'
+                update tbluser set status = 'Dropped', remarks = 'Dropped', batch = '$this->batch', semester = '$this->semester', reason = '$this->reason' where name = '$this->name'
 EOT;
             return ClassParent::insert($sql);
         }
@@ -501,8 +527,8 @@ EOT;
               values(
                   '$this->what',
                   '$this->who',
-                  '$this->when',
-                  '$this->where'
+                  '$this->whin',
+                  '$this->whiri'
               )
 EOT;
             return ClassParent::insert($sql);
@@ -517,6 +543,7 @@ EOT;
             }
             $sql = <<<EOT
               select 
+              id,
               what,
               who,
               whin,
@@ -538,8 +565,7 @@ EOT;
             on tbluser.name = grade.name
             inner join setgrade
             on grade.department = setgrade.department
-            where tbluser.status = 'pending'
-            AND tbluser.name = '$this->pk'
+            where tbluser.name = '$this->pk'
 EOT;
             return ClassParent::get($sql);
         }
@@ -553,7 +579,7 @@ EOT;
 EOT;
             return ClassParent::get($sql);
         }
-        public function getget(){
+        public function getget($data){
             foreach($data as $k=>$v){
                 $this->$k = pg_escape_string(strip_tags(trim($v)));
             }
@@ -561,7 +587,7 @@ EOT;
             select * from tbluser
             inner join grade
             on tbluser.name = grade.name
-            where tbluser.name = 'sandrex cabrales'
+            where tbluser.name = '$this->name'
             
 EOT;
             return ClassParent::get($sql);
@@ -602,15 +628,54 @@ EOT;
 EOT;
             return ClassParent::get($sql);
         }
+
+        public function batchcsv($data){
+            foreach($data as $k=>$v){
+                $this->$k = pg_escape_string(strip_tags(trim($v)));
+            }
+         
+            $sql = <<<EOT
+        
+            select * from grade
+            inner join tbluser
+            on grade.name = tbluser.name
+            where grade.department = '$this->subject'
+            AND grade.batch = '$this->batch'
+            AND grade.semester = '$this->semester'
+    
+            
+            
+            
+EOT;
+            return ClassParent::get($sql);
+        }
+        public function batchcsv2($data){
+            foreach($data as $k=>$v){
+                $this->$k = pg_escape_string(strip_tags(trim($v)));
+            }
+            $where = "";
+         
+            $sql = <<<EOT
+           
+               select * from setgrade where department = '$this->subject'  order by date desc limit 1
+
+            
+            
+            
+EOT;
+            return ClassParent::get($sql);
+        }
+        
+
         public function deactive($data){
             foreach($data as $k=>$v){
                 $this->$k = pg_escape_string(strip_tags(trim($v)));
             }
             $sql = <<<EOT
            with a as (
-               update tbluser set status = 'Completed', remarks = 'Completed' where name ='$this->name'
+               update tbluser set status = 'Completed', remarks = 'Completed', semester = '$this->semester', batch = '$this->batch' where name ='$this->name'
            )
-               update grade set status = 'Completed' where name = '$this->name'
+               update grade set status = 'Completed', semester = '$this->semester', batch = '$this->batch' where name = '$this->name'
 
             
             
@@ -619,6 +684,47 @@ EOT;
             return ClassParent::insert($sql);
         }
 
+        public function batch($data){
+            foreach($data as $k=>$v){
+                $this->$k = pg_escape_string(strip_tags(trim($v)));
+            }
+            if($this->batch == 'undefined'){
+                return false;
+            }
+            if($this->semester == 'undefined'){
+                return false;
+            }
+            $sql = <<<EOT
+            insert into batchsemeste(batch,semester)values('$this->batch','$this->semester')
+EOT;
+            return ClassParent::insert($sql);
+        }
+        
+        public function batch2(){
+            $sql = <<<EOT
+            select * from batchsemeste order by date DESC
+EOT;
+            return ClassParent::get($sql);
+        }
+
+        public function batchlist($data){
+            foreach($data as $k=>$v){
+                $this->$k = pg_escape_string(strip_tags(trim($v)));
+            }
+            
+     
+            $sql = <<<EOT
+            select * 
+            from tbluser 
+            inner join grade 
+            on tbluser.name = grade.name
+            where grade.semester = '$this->semester' AND
+            grade.batch = '$this->batch' AND
+            grade.department = '$this->subject'
+            
+EOT;
+            return ClassParent::get($sql);
+        }
         public function editan($data){
             foreach($data as $k=>$v){
                 $this->$k = pg_escape_string(strip_tags(trim($v)));
@@ -639,7 +745,11 @@ EOT;
 
             $sql = <<<EOT
       
-               update announcement set what = '$this-what', whiri = '$this->whiri',   
+               update announcement set what = '$this->what', 
+               whiri = '$this->whiri', 
+               who = '$this->who', 
+               whin = '$this->whin' 
+               where id = '$this->id'  
 
             
             
@@ -647,7 +757,87 @@ EOT;
 EOT;
             return ClassParent::insert($sql);
         }
+        public function dropcsv($data){
+            foreach($data as $k=>$v){
+                $this->$k = pg_escape_string(strip_tags(trim($v)));
+            }
+            $sql=<<<EOT
+                select * from tbluser
+                inner join grade on
+                tbluser.name = grade.name
+                where tbluser.status = 'Dropped' 
+                AND tbluser.remarks = 'Dropped' 
+                AND tbluser.batch = '$this->batch'
+                AND tbluser.semester = '$this->semester' 
+                AND grade.department = '$this->subject'
+EOT;
+            return ClassParent::get($sql);
+        }
+        
+        public function undrop($data){
+            foreach($data as $k=>$v){
+                $this->$k = pg_escape_string(strip_tags(trim($v)));
+            }
+            $sql = <<<EOT
+            update tbluser set remarks = 'pending', status = 'pending' where name = '$this->name';
+EOT;
+            return ClassParent::insert($sql);
+        }
 
+        public function deletean($data){
+            foreach($data as $k=>$v){
+                $this->$k = pg_escape_string(strip_tags(trim($v)));
+            }
+            $sql = <<<EOT
+            delete from announcement where id = '$this->id'
+EOT;
+            return ClassParent::insert($sql);
+        }
+
+        public function searchgrad($data){
+            foreach($data as $k=>$v){
+                $this->$k = pg_escape_string(strip_tags(trim($v)));
+            }
+            $sql = <<<EOT
+            select * from tbluser
+            inner join grade on
+            tbluser.name = grade.name
+            where tbluser.batch = '$this->batch' 
+            AND grade.department = '$this->subject'
+            order by tbluser.name ASC
+EOT;
+            return ClassParent::get($sql);
+        }
+        
+
+        public function add_photo($data){
+            foreach($data as $k=>$v){
+                $this->$k = pg_escape_string(strip_tags(trim($v)));
+            }
+            $sql = <<<EOT
+            insert into photo(caption,path)values('$this->name', '$this->profimg')
+EOT;
+            return ClassParent::insert($sql);
+        }
+
+        public function uploads(){
+        
+            $sql = <<<EOT
+            select * from photo order by date DESC
+EOT;
+            return ClassParent::get($sql);
+        }
+        public function deletephoto($data){
+            foreach($data as $k=>$v){
+                $this->$k = pg_escape_string(strip_tags(trim($v)));
+            }
+            $sql = <<<EOT
+           delete from photo where id = '$this->id'
+EOT;
+            return ClassParent::insert($sql);
+        }
+
+        
         
 
 

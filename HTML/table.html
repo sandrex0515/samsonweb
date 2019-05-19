@@ -36,12 +36,12 @@
                             </select>
               
                         </div>
-                        <div class="col-lg-2 text-center">
+                        <!-- <div class="col-lg-2 text-center">
                                 <br><br>
                               <button type="button" class="btn btn-primary">Export csv</button>
-                                </div>
+                                </div> -->
 
-                        <div class="col-lg-2 text-center">
+                        <div class="col-lg-4 text-center">
                                 <br><br>
                                 <button type="button" ng-click="clear()" class="btn btn-primary">Reset</button>
                             </div>
@@ -65,7 +65,7 @@
                             <td>{{v.course}}</td>
                             <td>{{v.subject}}</td>
                             <td>{{v.section}}</td>
-                            <td data-toggle="tooltip" title="Drop student"><button type="button" ng-click="drop(v)" class="btn btn-primary"><ion-icon name="thumbs-down" style="zoom:1.1"></ion-icon></button></td>
+                            <td data-toggle="tooltip" title="Drop student"><button type="button" ng-click="drop(v)" data-toggle="modal" data-target="#dropmod" class="btn btn-primary"><ion-icon name="thumbs-down" style="zoom:1.1"></ion-icon></button></td>
                           </tr>
                       
                         </tbody>
@@ -81,23 +81,39 @@
                     </script>
             
             
-            <div class="modal fade" id="showmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="dropmod" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    
-                    </button>
+                    <h1>Drop Batch</h1>
                   </div>
                   <div class="modal-body text-center">    
-                    <br><br><br>
-                    <div class="container text-danger">
-                    <h2>Warning you need to set today's Sales click the button "Set Today's Sales"</h2>
-                  </div>
-                  <br><br><br>
+                   <br>
+                   
+                   <label>
+                      Batch
+                    </label>
+                   <input type="text" class="form-control" placeholder="Ex. 2019-2020" ng-model="filter.batch">
+              
+                    <label>
+                      Semester
+                    </label>
+                    <select class="form-control" ng-model="filter.semester">
+                      <option>1</option>
+                      <option>2</option>
+                    </select>
+                    <br>
+                  
+                    <label>
+                        Reason
+                      </label>
+                     <input type="text" class="form-control" placeholder="Reason" ng-model="filter.reason">
+  
+                    
               
                 </div>
                   <div class="modal-footer">
-                      <button type="button" ng-click="settoday()" class="btn btn-primary">Set Today's Sales</button>
+                      <button type="button" ng-click="dropbatch2(dropbatch)" class="btn btn-primary" data-dismiss="modal">Drop</button>
                     <button type="button" ng-click="" class="btn btn-secondary" data-dismiss="modal">Close</button>
                   </div>
                 </div>

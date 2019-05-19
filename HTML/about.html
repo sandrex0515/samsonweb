@@ -1,0 +1,295 @@
+
+
+
+<style>
+        body {
+          background-color: #eee;
+    
+        }
+        .pic:hover {
+            border: 1px solid #fff;
+            cursor: pointer;
+            height: 150px;
+        }
+        .hello {
+          opacity: 1 !important;
+        }
+        .full {
+          position: fixed;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 1;
+        }
+        .full .content {
+          background-color: rgba(0,0,0,0.75) !important;
+          height: 100%;
+          width: 100%;
+          display: grid;
+        }
+        .full .content img {
+          left: 50%;
+          transform: translate3d(0, 0, 0);
+          animation: zoomin 1s ease;
+          max-width: 100%;
+          max-height: 100%;
+          margin: auto;
+        }
+        .byebye {
+          opacity: 0;
+        }
+        .byebye:hover {
+          transform: scale(0.2) !important;
+        }
+        .gallery {
+          display: grid;
+          grid-column-gap: 8px;
+          grid-row-gap: 8px;
+          grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+          grid-auto-rows: 8px;
+        }
+        .gallery img {
+          max-width: 100%;
+          border-radius: 8px;
+          box-shadow: 0 0 16px #333;
+          transition: all 1.5s ease;
+        }
+        .gallery img:hover {
+          box-shadow: 0 0 32px #333;
+        }
+        .gallery .content {
+          padding: 4px;
+        }
+        .gallery .gallery-item {
+          transition: grid-row-start 300ms linear;
+          transition: transform 300ms ease;
+          transition: all 0.5s ease;
+          cursor: pointer;
+        }
+        .gallery .gallery-item:hover {
+          transform: scale(1.025);
+        }
+        @media (max-width: 600px) {
+          .gallery {
+            grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
+          }
+        }
+        @media (max-width: 400px) {
+          .gallery {
+            grid-template-columns: repeat(auto-fill, minmax(50%, 1fr));
+          }
+        }
+        @-moz-keyframes zoomin {
+          0% {
+            max-width: 50%;
+            transform: rotate(-30deg);
+            filter: blur(4px);
+          }
+          30% {
+            filter: blur(4px);
+            transform: rotate(-80deg);
+          }
+          70% {
+            max-width: 50%;
+            transform: rotate(45deg);
+          }
+          100% {
+            max-width: 100%;
+            transform: rotate(0deg);
+          }
+        }
+        @-webkit-keyframes zoomin {
+          0% {
+            max-width: 50%;
+            transform: rotate(-30deg);
+            filter: blur(4px);
+          }
+          30% {
+            filter: blur(4px);
+            transform: rotate(-80deg);
+          }
+          70% {
+            max-width: 50%;
+            transform: rotate(45deg);
+          }
+          100% {
+            max-width: 100%;
+            transform: rotate(0deg);
+          }
+        }
+        @-o-keyframes zoomin {
+          0% {
+            max-width: 50%;
+            transform: rotate(-30deg);
+            filter: blur(4px);
+          }
+          30% {
+            filter: blur(4px);
+            transform: rotate(-80deg);
+          }
+          70% {
+            max-width: 50%;
+            transform: rotate(45deg);
+          }
+          100% {
+            max-width: 100%;
+            transform: rotate(0deg);
+          }
+        }
+        @keyframes zoomin {
+          0% {
+            max-width: 50%;
+            transform: rotate(-30deg);
+            filter: blur(4px);
+          }
+          30% {
+            filter: blur(4px);
+            transform: rotate(-80deg);
+          }
+          70% {
+            max-width: 50%;
+            transform: rotate(45deg);
+          }
+          100% {
+            max-width: 100%;
+            transform: rotate(0deg);
+          }
+        }
+        
+        </style>
+        <div class="nav-wrapper">
+            <nav class="navbar navbar-default mainmenu" data-offset-top="1" data-spy="affix">
+              <div class="container">
+                <div class="navbar-header">
+                  <button class="navbar-toggle" data-target="#myNavbar" data-toggle="collapse" type="button"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand" href=""><span><img src="media/samson.png" style="height: 50px;width: 50px"></span></a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                  <ul class="nav navbar-nav" style="font-size: 20px;padding-top:15px;">
+                    
+                    <li class="active">
+                      <a href="#/">Home</a>
+                    </li>
+                    <li>
+                      <a href="#/about">About</a>
+                    </li>
+                    <li>
+                        <a href="#/gallery">Gallery</a>
+                      </li>
+                      
+                  </ul>
+                  <ul class="nav navbar-nav navbar-right" style="font-size: 20px;">
+                    <li ng-if="info.status">
+                 <a href="teacher/page/index.html" ng-if="info.name == 'Eugene Abayon'"><button class="login-btn"  type="button"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{info.name}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;My dashboard</button></a>
+                 <a href="student/page/index.html" ng-if="info.name != 'Eugene Abayon'"><button class="login-btn"  type="button"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{info.name}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;My dashboard</button></a>
+        
+                    </li>
+                    <li ng-if="!info.status">
+                      <a href="HTML/loader.html"><button class="login-btn"  type="button"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Login</button></a>
+                         </li>
+                  </ul>
+                </div>
+              </div>
+            </nav>
+          </div>
+          <br>
+          <div class="modal fade" id="login-box" role="dialog">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button class="close" data-dismiss="modal" type="button"></button>
+                  <h4 class="modal-title">
+                    Modal Header
+                  </h4>
+                </div>
+                <div class="modal-body">
+                  <p>
+                    Some text in the modal.
+                  </p>
+                </div>
+                <div class="modal-footer">
+                  <button class="btn btn-default" data-dismiss="modal" type="button">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br><br><br><br>
+    
+    
+<div class="row text-center">
+    <div class="container">
+            
+    
+    <div class="col-lg-6 wow bounceIn" data-wow-duration="2s" data-wow-delay="1s">
+        <img src="media/60606731_848928448774231_3944329614813298688_n.jpg" class="img-thumbnail">
+        <h1>Dante Quevedo</h1>
+        <h3>NSTP Director SCST</h3>
+    </div>
+    <div class="col-lg-6 wow bounceIn" data-wow-duration="2s" data-wow-delay="1s">
+            <img src="media/60541137_838715789838881_2551562464789528576_n.jpg" class="img-thumbnail">
+            <h1>Eugene D. Abayon</h1>
+            <h3>NSTP Coordinator</h3>
+        </div>
+    </div>
+</div>
+
+
+       <div class="row text-center ">
+              <div class="container">
+                <div class="col-lg-12 wow bounceIn" data-wow-duration="2s" data-wow-delay="1s">
+                        <h1>ABOUT</h1>
+            </div>
+            <br>
+            <div class="col-lg-6 wow fadeInLeft" data-wow-duration="2s" data-wow-delay="1s" >
+                <p class="text-justify text-center" style="text-transform: capitalize;font-size: 18px;font-family: Verdana, Geneva, Tahoma, sans-serif">
+                        The National Service Training Program (NSTP) Act of 2001 (R.A. 9163) was enacted in response to public clamor for reforms in the Reserved Officers Training Corps (ROTC) Program. 
+                </p>
+                <p class="text-justify text-center" style="text-transform: capitalize;font-size: 18px;font-family: Verdana, Geneva, Tahoma, sans-serif">
+
+                        This act affirms that the prime duty of the government shall be to serve and protect its citizens. In turn, it shall be the responsibility of all its citizens to defend the security of the State; thus, the government may require each citizen to render personal, military or civil service. 
+                        
+                        In the pursuit of these goals, the youth shall be motivated, trained, organized, and mobilized in military training, literacy, civic welfare, and other similar endeavors in service to the nation.
+                </p>
+                <p class="text-justify text-center" style="text-transform: capitalize;font-size: 18px;font-family: Verdana, Geneva, Tahoma, sans-serif">
+
+                        The NSTP is a program aimed at enhancing civic consciousness and defense preparedness in the youth by developing the ethics of service and patriotism while undergoing training in any of its program components.
+                        
+                        Its various components are specially designed to enhance the youth’s active contribution to the general welfare of the nation. All male and female students enrolled in any baccalaureate or in at least two (2)-year technical/vocational or associate courses are required to complete the equivalent of two (2) semesters of an NSTP Common Module for the period of at least 25-hours and any one of the NSTP components listed below as a requisite for graduation:
+                </p>
+            </div>
+            <div class="col-lg-6 wow fadeInRight" data-wow-duration="1s" data-wow-delay="1s" style="outline:none;border:none;">
+              
+              <img src="media/cwts.png" class="img-thumbnail" style="outline:none;border:none;">
+              </div>
+         </div>
+          </div>
+          <br>
+          <div class="row text-center">
+              <div class="col-lg-12" style="outline:none;border:none;list-style: none;">
+                <div class="container">  
+                <li class="wow fadeIn" data-wow-duration="1s" data-wow-delay="1s">     
+                      
+                      <p style="font-size: 24px;">1) Reserve Officers’ Training Corps (ROTC)</p>
+                        <img src="media/60539362_308272786726096_4764557609732669440_n.jpg" class="img-thumbnail">
+
+                    </li>
+                    <br>
+                    <li class="wow fadeIn" data-wow-duration="1s" data-wow-delay="1s">     
+                            <p style="font-size: 24px;">
+                                2) Literacy Training Service (LTS)
+
+
+                        </p>
+                    </li<br>
+                    <li class="wow fadeIn" data-wow-duration="2s" data-wow-delay="1s">     
+                            <p style="font-size: 24px;">     3) Civic Welfare Training Service (CWTS)
+
+                            </p>
+                            <img src="media/60957600_326916154649182_580559826141052928_n.jpg" class="img-thumbnail">
+
+                    </li>
+                </div>
+                </div>
+          </div>
+
+          <br><br><br>

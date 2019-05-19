@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="app">
 <head>
+  <link rel="icon" href="../../media/samson.png">
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" name="viewport">
   <title>Dashboard</title>
@@ -60,6 +61,7 @@ input[type=number]::-webkit-outer-spin-button {
             <li>
               <a href="#" class="has-dropdown"><i class="ion ion-ios-albums-outline"></i><span>Settings</span></a>
               <ul class="menu-dropdown">
+                <li><a href="#/gallery"><i class="ion ion-ios-circle-outline sample11" ></i>Gallery</a></li>
                 <li><a href="#/gradecom"><i class="ion ion-ios-circle-outline sample"></i>Grade Computation</a></li>
                 <li><a href="#/subject"><i class="ion ion-ios-circle-outline sample1" ></i>Subject/Section</a></li>
               </ul>
@@ -67,7 +69,7 @@ input[type=number]::-webkit-outer-spin-button {
             <li>
               <a href="#" class="has-dropdown"><i class="ion ion-ios-albums-outline"></i><span>Student</span></a>
               <ul class="menu-dropdown">
-                  <li><a href="#/table"><i class="ion ion-ios-circle-outline sample2"></i>Table</a></li>
+                  <li><a href="#/table"><i class="ion ion-ios-circle-outline sample2"></i>Student List</a></li>
                 <li><a href="#/grade"><i class="ion ion-ios-circle-outline sample3"></i>Grade</a></li>
                 <li><a href="#/attendance"><i class="ion ion-ios-circle-outline sample4"></i>Attendance</a></li>
                 <li><a href="#/exam"><i class="ion ion-ios-circle-outline sample5"></i>Exam</a></li>
@@ -82,9 +84,9 @@ input[type=number]::-webkit-outer-spin-button {
             <li>
                 <a href="#" class="has-dropdown"><i class="ion ion-ios-albums-outline"></i><span>Archive</span></a>
                 <ul class="menu-dropdown">
-                  <li><a href="../../HTML/categorymain.html"><i class="ion ion-ios-circle-outline"></i>Batch list</a></li>
-                  <li><a href="../../HTML/drop.html"><i class="ion ion-ios-circle-outline"></i>Drop list</a></li>
-
+                    <li><a href="#/graduate"><i class="ion ion-ios-circle-outline sample35"></i>Graduate list</a></li>
+                  <li><a href="#/batch"><i class="ion ion-ios-circle-outline sample33"></i>Batch list</a></li>
+                  <li><a href="#/drop"><i class="ion ion-ios-circle-outline sample34"></i>Drop list</a></li>
                 </ul>
               </li>   
             <li>
@@ -101,7 +103,7 @@ input[type=number]::-webkit-outer-spin-button {
             
         <br>
             <li> 
-              <i class="fa fa-power-off fa-2x text-danger" style="padding-left: 10%;" onclick="logout()" aria-hidden="true"> Sign out</i>
+              <i class="fa fa-power-off fa-2x text-danger" style="padding-left: 10%; cursor: pointer" onclick="logout()" aria-hidden="true"> Sign out</i>
             </li>
             
 
@@ -145,7 +147,9 @@ input[type=number]::-webkit-outer-spin-button {
 
   <script>
   $(document).ready(function() {            
-
+    $(document).on("wheel", "input[type=number]", function (e) {
+    $(this).blur();
+});
   $.ajax({    //create an ajax request to display.php
     type: "GET",
     url: "../../php/FUNCTIONS/session.php",

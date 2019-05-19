@@ -19,28 +19,32 @@
        </div>
        
          <div class="col-lg-4">
-        <label>Prelim Exam Percentage</label>
+           
+            <label>Subject Proficiency Percentage</label>
+            <input type="number" class="form-control"  ng-model="grade.subpro" placeholder="0%"><br>
+            <label>Project Percentage</label>
+           <input type="number" class="form-control" ng-model="grade.activities" placeholder="0%"><br>
+        <!-- <label>Prelim Exam Percentage</label>
         <input type="number" class="form-control"  ng-model="grade.prelim"  placeholder="0%"><br>
         <label>Midterm Exam Percentage</label>
         <input type="number" class="form-control"  ng-model="grade.midterm" placeholder="0%"><br>
         <label>Finals Exam Percentage</label>
-        <input type="number" class="form-control"  ng-model="grade.finals" placeholder="0%"><br>
+        <input type="number" class="form-control"  ng-model="grade.finals" placeholder="0%"><br> -->
     </div>
     <div class="col-lg-4">
-            <label>Recitation/Activities Percentage</label>
-            <input type="number" class="form-control" ng-model="grade.activities" placeholder="0%"><br>
+  
             <label>Attendance Percentage</label>
 
             <input type="number" class="form-control" ng-model="grade.attendance" placeholder="0%"><br>
             
-            <label>Character Percentage</label>
+            <label>Apptitude Percentage</label>
             <input type="number" class="form-control" ng-model="grade.character" placeholder="0%"><br>
     </div>
     <div class="col-lg-4">
             <!-- <label>Quiz Percentage</label> -->
             <!-- <input type="number" class="form-control" ng-model="grade.quiz" placeholder="0%"><br> -->
             <br>
-            <p style="font-size: 22px;">Total Percentage: {{grade.prelim + grade.quiz + grade.midterm + grade.finals + grade.activities + grade.attendance + grade.character}}%</p>
+            <p style="font-size: 22px;">Total Percentage: {{grade.subpro + grade.activities + grade.attendance + grade.character}}%</p>
             <p style="font-size: 24px" class="text-danger" ng-if="grade.message1">Total percentage value is less than 100%</p>
             <p style="font-size: 24px" class="text-danger" ng-if="grade.message">All fields are required, if one of these field is not fit on your grading system kindly put 0 value</p>
             <p style="font-size: 24px" class="text-danger" ng-if="grade.message2">Total percentage value has exceeded 100%</p>
@@ -62,28 +66,23 @@
         </div>
         
           <div class="col-lg-4">
-         <label>Prelim Exam Percentage</label>
-         <input type="number" class="form-control"  ng-model="grade3.prelim"  placeholder="0%"><br>
-         <label>Midterm Exam Percentage</label>
-         <input type="number" class="form-control"  ng-model="grade3.midterm" placeholder="0%"><br>
-         <label>Finals Exam Percentage</label>
-         <input type="number" class="form-control"  ng-model="grade3.finals" placeholder="0%"><br>
+         <label>Subject Proficiency Percentage</label>
+         <input type="number" class="form-control"  ng-model="grade3.subpro"  placeholder="0%"><br>
      </div>
      <div class="col-lg-4">
-             <label>Recitation/Activities Percentage</label>
-             <input type="number" class="form-control" ng-model="grade3.activities" placeholder="0%"><br>
+         
              <label>Attendance Percentage</label>
  
              <input type="number" class="form-control" ng-model="grade3.attendance" placeholder="0%"><br>
              
-             <label>Character Percentage</label>
+             <label>Apptitude Percentage</label>
              <input type="number" class="form-control" ng-model="grade3.character" placeholder="0%"><br>
      </div>
      <div class="col-lg-4">
              <!-- <label>Quiz Percentage</label> -->
              <!-- <input type="number" class="form-control" ng-model="grade.quiz" placeholder="0%"><br> -->
              <br>
-             <p style="font-size: 22px;">Total Percentage: {{grade3.prelim + grade3.quiz + grade3.midterm + grade3.finals + grade3.activities + grade3.attendance + grade3.character}}%</p>
+             <p style="font-size: 22px;">Total Percentage: {{grade3.subpro + grade3.attendance + grade3.character}}%</p>
              <p style="font-size: 24px" class="text-danger" ng-if="grade3.message1">Total percentage value is less than 100%</p>
              <p style="font-size: 24px" class="text-danger" ng-if="grade3.message">All fields are required, if one of these field is not fit on your grading system kindly put 0 value</p>
              <p style="font-size: 24px" class="text-danger" ng-if="grade3.message2">Total percentage value has exceeded 100%</p>

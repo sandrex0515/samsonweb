@@ -14,6 +14,14 @@ alter table tbluser add column course varchar;
 alter table tbluser add column parentcon varchar;
 alter table tbluser add column gender text;
 alter table tbluser add column religion varchar;
+alter table tbluser add column semester varchar;
+alter table tbluser add column batch varchar;
+alter table tbluser add column reason varchar default 'none';
+
+
+alter table  grade add column semester varchar;
+alter table grade add column batch varchar;
+
 
 create table tblsubject(name varchar, subject varchar, section varchar, teacher varchar, subject_archived boolean default false);
 alter table tblsubject owner to sandrex;
@@ -36,6 +44,7 @@ alter table setgrade owner to sandrex;
 alter table setgrade add constraint teacher_name unique(teacher);
 alter table setgrade drop constraint teacher_name;
 alter table setgrade add column department varchar;
+alter table setgrade add column px numeric;
 
 create table section(id serial primary key, teacher text, subject varchar, section varchar, date timestamp default now());
 alter table section owner to sandrex;
@@ -45,8 +54,7 @@ alter table grade owner to sandrex;
 alter table grade add column date timestamp default now();
 drop table grade;
 alter table grade add column course varchar default 'none';
-
-
+alter table grade add column px numeric;
 
 create table grade(id serial primary key, name varchar, pexam numeric default 0, 
 pactive numeric default 0, pattend numeric default 0, pchar numeric default 0, 
@@ -63,11 +71,16 @@ alter table grade add column section varchar;
 update grade set subject ='NSTP 2', section = '42A1';
 alter table grade add column department text;
 alter table grade add column status varchar default 'pending';
+alter table grade add column px numeric default 0;
 
 
 
 create table announcement(id serial primary key, who varchar not null, what varchar not null, whiri varchar not null, whin varchar not null, date timestamp default now());
 alter table announcement owner to sandrex;
 
+create table batchsemeste(id serial primary key, batch varchar, semester varchar, date timestamp default now());
+alter table batchsemeste owner to sandrex;
 
+create table photo(id serial primary key, caption varchar, path varchar, date timestamp default now());
+alter table photo owner to sandrex;
 

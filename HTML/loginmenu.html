@@ -39,25 +39,25 @@
                     </div>
                 </div>
                 <div class="row" style="margin-top:5%;">
-                    <div class="col-lg-4 text-center" >
+                    <div class="col-lg-6 text-center" >
                         <img src="../media/26-512.png" class="img-thumnail" style="border-radius: 150px;height: 200px;width: 200px">
                         <h1>Student</h1>
                         <button class="btn btn-primary" data-toggle="modal" data-target="#loginstudent">Login</button>
                         <br>
                     </div>
        
-                    <div class="col-lg-4 text-center">
+                    <div class="col-lg-6 text-center">
                             <img src="../media/25cc59bb9d.png" class="img-thumnail" style="border-radius: 150px;height: 200px;width: 200px">
                             <h1>Teacher</h1>
                             <button class="btn btn-primary" data-toggle="modal" data-target="#loginteacher">Login</button>
                             <br>
                         </div>
               
-                        <div class="col-lg-4 text-center">
+                        <!-- <div class="col-lg-4 text-center">
                                 <img src="../media/User_Gear_Cog_Configure_Control_Manage_Management-512.png" class="img-thumnail" style="border-radius: 150px;height: 200px;width: 200px">
                                 <h1>Admin</h1>
                                 <button class="btn btn-primary" data-toggle="modal" data-target="#loginadmin">Login</button>
-                            </div>
+                            </div> -->
                 </div>
             </div>
 
@@ -362,6 +362,7 @@ $(document).ready(function(){
         var name = $('#name').val();
         var birth = $('#birth').val();
         var peradd = $('#peradd').val();
+        var gender = $('#gender').val();
         var add = $('#add').val();
         var con = $('#con').val();
         var prov = $('#prov').val();
@@ -379,7 +380,7 @@ $(document).ready(function(){
         if(empid.replace(/\s/g,'') == "" || pass.replace(/\s/g,'') == "" 
         || name.replace(/\s/g,'') == "" || birth.replace(/\s/g,'') == "" 
         || peradd.replace(/\s/g,'') == "" || add.replace(/\s/g,'') == "" 
-        || con.replace(/\s/g,'') == "" || prov.replace(/\s/g,'') == "" 
+        || con.replace(/\s/g,'') == "" || prov.replace(/\s/g,'') == "" || gender.replace(/\s/g,'') == "" 
         || parentname.replace(/\s/g,'') == "" || parentocu.replace(/\s/g,'') == "" 
         || parentcon.replace(/\s/g,'') == "" || parentadd.replace(/\s/g,'') == "" 
         || emeradd.replace(/\s/g,'') == "" || emername.replace(/\s/g,'') == "" 
@@ -393,7 +394,7 @@ $(document).ready(function(){
         else {
             $.ajax('../php/FUNCTIONS/register.php', {
                 type: "POST",
-                data: { email : empid, password : pass, name: name, birth: birth, peradd: peradd, address: add, 
+                data: { email : empid, password : pass, name: name, birth: birth, gender : gender, peradd: peradd, address: add, 
                 contact: con, province : prov, parentname: parentname, parentocu: parentocu, 
                 parentcon: parentcon, emername: emername, emercon: emercon, w: w, h: h
                 },
@@ -407,7 +408,7 @@ $(document).ready(function(){
                     }
                 },
                 success: function(data){
-                  alert('Congratulations you have successfully enrolled. Kindly print the PDF file and pass it to Mr. Eugune Abayon. The PDF file will automatically download after pressing ok button, kindly login now and set your subject, course and section.');
+                  alert('Congratulations you have successfully enrolled. Kindly login now to download your application form');
                     $('#enroll').modal('hide'); 
                 }
             });

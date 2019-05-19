@@ -26,7 +26,7 @@
     <div class="row bg-light" ng-if="fetchannounce.status">
       <div class="col-lg-6 bg-white" style="text-transform: uppercase" ng-repeat="(k,v) in fetchannounce track by $index">
         <hr>
-        <h4>Date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-pencil text-success" ng-click="editan(v)" style="cursor: pointer" aria-hidden="true"></i>&nbsp;<i class="fa fa-close text-danger" ng-click="deletean()" style="cursor: pointer" aria-hidden="true"></i> <h5 class="text-info">{{v.date}}</h5> </h4>
+        <h4>Date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<i class="fa fa-close text-danger" ng-click="deletean(v)" style="cursor: pointer" aria-hidden="true"></i> <h5 class="text-info">{{v.date}}</h5> </h4>
         <hr>
           <table class="table">
               <thead>
@@ -137,17 +137,17 @@
         </div>
         <div class="modal-body text-center">    
             <label>WHO</label>
-            <input type="text" class="form-control bg-dark text-light" ng-model="announcement.who" placeholder="WHO"><br>
+            <input type="text" class="form-control bg-dark text-light" ng-model="fetchannounce2.who" placeholder="WHO"><br>
             <label>WHAT</label>
-            <input type="text" class="form-control bg-dark text-light" ng-model="announcement.what" placeholder="WHAT"><br>
+            <input type="text" class="form-control bg-dark text-light" ng-model="fetchannounce2.what" placeholder="WHAT"><br>
             <label>WHERE</label>
-            <input type="text" class="form-control bg-dark text-light" ng-model="announcement.where" placeholder="WHERE"><br>
+            <input type="text" class="form-control bg-dark text-light" ng-model="fetchannounce2.whiri" placeholder="WHERE"><br>
             <label>WHEN</label>
-            <input type="text" class="form-control bg-dark text-light" ng-model="announcement.when" placeholder="WHEN"><br>
+            <input type="text" class="form-control bg-dark text-light" ng-model="fetchannounce2.whin" placeholder="WHEN"><br>
     
       </div>
         <div class="modal-footer">
-            <button type="button" ng-click="announce()" class="btn btn-primary"  >Announce</button>
+            <button type="button" ng-click="editan(fetchannounce2)" data-dismiss="modal" class="btn btn-primary"  >Announce</button>
           <button type="button" ng-click="" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
       </div>

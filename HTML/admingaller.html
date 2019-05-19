@@ -1,0 +1,39 @@
+<style>
+    .sample11{
+        background-color: #574B90;
+      border-radius: 120px;
+      -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, .13);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, .13);
+    }
+    </style>
+    <div class="main-content">
+        <section class="section">
+          <h1 class="section-header">
+            <div>Gallery</div>
+          </h1>
+          <br>
+          <div class="row">
+              <div class="col-lg-12 text-center">
+                <a href="../../HTML/photo.html" class="btn btn-primary">  <i class="fa fa-plus" aria-hidden="true"> New Image</i></a>
+              </div>
+          </div>
+          <br>
+          <div class="row text-center">
+              <div class="col-lg-3" ng-repeat="(k,v) in uploads track by $index">
+                <button class="btn btn-danger text-center" title="Delete" ng-click="deletephoto(v)"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                <img src="../../{{v.path}}" class="img-thumbnail">
+            <h5 class="bg-secondary text-center">{{v.caption}} </h5>
+            <br>
+            </div>
+       
+        </div>
+    
+    
+       
+        </section>
+    </div>
+    
+    
+    
+  
+            

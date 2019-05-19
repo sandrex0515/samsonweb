@@ -1,0 +1,241 @@
+<style>
+    .sample34{
+      background-color: #574B90;
+      border-radius: 120px;
+      -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, .13);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, .13);
+    }
+    </style>
+    <div class="main-content">
+            <section class="section">
+              <h1 class="section-header">
+                <div>Drop list</div>
+              </h1>
+              <br>
+              <div class="row">
+                  <div class="col-lg-4 text-center">
+                      <label>Subject</label>
+                        <select ng-model="filter.subject" 
+                          
+                          class="form-control"> 
+                          <option >NSTP</option>  
+                          <option >ROTC</option>  
+                          </select>
+                </div>
+                  <div class="col-lg-4 text-center">
+                        <label>Batch</label>
+                      <input type="text" class="form-control" ng-model="filter.batch" placeholder="Ex. 2019-2020">
+        
+                  </div>
+                  <div class="col-lg-4 text-center">
+                        <label>Semester</label>
+                        <select ng-model="filter.semester" 
+                          
+                          class="form-control"> 
+                          <option >1</option>  
+                          <option >2</option>  
+                          </select>
+                    </div>
+                
+                
+              
+
+                
+            </div>
+              <br>
+              <div class="row">
+                  <div class="col-lg-12 text-center"><br>
+                      <button type="button" class="btn btn-primary" ng-click="searchdrop()">Search</button>
+                      <button type="button" class="btn btn-primary" ng-click="clear()">Reset</button>
+                  </div>
+              </div>
+              <br>
+
+              <table class="table table-hover table-primary" ng-if="dropbatch.status">
+                    <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Course</th>
+                            <th scope="col">Reason</th>
+                            <th scope="col">Options</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr ng-repeat="(k,v) in dropbatch track by $index">
+                            <th>{{$index+1}}</th>
+                            <td>{{v.name}} </td>
+                            <td>{{v.course}} </td>
+                            <td>{{v.reason}} </td>
+                            <td data-toggle="tooltip" title="Undrop student"><button type="button" class="btn btn-primary" ng-click="undrop(v)" data-toggle="modal" data-target="#edit"><ion-icon name="thumbs-up" style="zoom:1.1"></ion-icon></button> 
+                           </button> 
+        
+                           
+                            </td>
+                          </tr>
+                      
+                        </tbody>
+                      </table>
+              
+           
+            </section>
+        </div>
+        
+        <script>
+               
+                </script>
+        
+        
+        <div class="modal fade" id="searchbatch" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg" style="max-width: 1280px;" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                
+                </button>
+              </div>
+              <div class="modal-body text-center" style="max-height: 600px; overflow-y: auto;">    
+                <h3>{{filter.quarter}}</h3>
+                <h3>{{filter.subject}} - {{filter.section}}</h3>  
+                <br>
+                  <table class="table">
+                      <thead class="thead-dark">
+                        <tr ng-if="filter.quarter != 'Final Grade'">
+                          <th scope="col">Name</th>
+
+                          <th scope="col">Exam</th>
+                          <th scope="col">Activities</th>
+                          <th scope="col">Attendance</th>
+                          <th scope="col">Character</th>
+                          <th scope="col">Grade</th>
+                          <th scope="col">Remarks</th>
+
+
+
+
+                        </tr>
+                        <tr ng-if="filter.quarter == 'Final Grade'">
+                          <th scope="col">Name</th>
+                          <th scope="col">Prelim</th>
+                          <th scope="col">Midterm</th>
+                          <th scope="col">Finals</th>
+                          <th scope="col">Practical Exam</th>
+                          <th scope="col">Overall</th>
+                          <th scope="col">Remarks</th>
+
+
+
+
+                        </tr>
+                      </thead>
+                      <tbody ng-if="filter.quarter == 'Prelim'">
+                        <tr ng-repeat="(k,v) in gradelist track by $index" ng-if="gradelist.status">
+                          <td ng-if="filter.quarter == 'Prelim'">{{v.name }}</td>
+                          <td ng-if="filter.quarter == 'Prelim'">{{(v.pexam * 1) / grade.prelim * 100 | number}}%</td>
+                          <td ng-if="filter.quarter == 'Prelim'">{{(v.pactive * 1 )/ grade.activities * 100 | number}}%</td>
+                          <td ng-if="filter.quarter == 'Prelim'">{{(v.pattend * 1) / grade.attendance * 100 | number}}%</td>
+                          <td ng-if="filter.quarter == 'Prelim'">{{(v.pchar * 1) / grade.character * 100 | number}}%</td>
+                          <td ng-if="filter.quarter == 'Prelim'">{{(v.pexam * 1 / grade.prelim * 100 / 4) + (v.pactive * 1  / grade.activities * 100 / 4) + (v.pattend * 1 / grade.attendance * 100 / 4) + (v.pchar * 1 / grade.character * 100 / 4)  | number}}%</td>
+                          <!-- <td ng-if="filter.quarter == 'Prelim'">{{v.pexam / grade.prelim * 100 + (100 - v.pexam / grade.prelim * 100) * ggrade.prelim / 100 | number }}</td> -->
+                          <td ng-if="(v.pexam * 1 / grade.prelim * 100 / 4) + (v.pactive * 1  / grade.activities * 100 / 4) + (v.pattend * 1 / grade.attendance * 100 / 4) + (v.pchar * 1 / grade.character * 100 / 4) <= 74" class="text-danger">Failed</td>
+                          <td ng-if="(v.pexam * 1 / grade.prelim * 100 / 4) + (v.pactive * 1  / grade.activities * 100 / 4) + (v.pattend * 1 / grade.attendance * 100 / 4) + (v.pchar * 1 / grade.character * 100 / 4) >= 75" class="text-success">Passed</td>
+                        </tr>
+                      </tbody>
+                      <tbody ng-if="filter.quarter == 'Midterm'">
+
+                        <tr ng-repeat="(k,v) in gradelist track by $index" ng-if="gradelist.status" >
+                          <td ng-if="filter.quarter == 'Midterm'">{{v.name }}</td>
+                          <td ng-if="filter.quarter == 'Midterm'">{{(v.mexam * 1) / grade.midterm * 100 | number}}%</td>
+                          <td ng-if="filter.quarter == 'Midterm'">{{(v.mactive * 1 )/ grade.activities * 100 | number}}%</td>
+                          <td ng-if="filter.quarter == 'Midterm'">{{(v.mattend * 1) / grade.attendance * 100 | number}}%</td>
+                          <td ng-if="filter.quarter == 'Midterm'">{{(v.mchar * 1) / grade.character * 100 | number}}%</td>
+                          <td ng-if="filter.quarter == 'Midterm'">{{(v.mexam * 1 / grade.midterm * 100 / 4) + (v.mactive * 1  / grade.activities * 100 / 4) + (v.mattend * 1 / grade.attendance * 100 / 4) + (v.mchar * 1 / grade.character * 100 / 4)  | number}}%</td>
+                          <!-- <td ng-if="filter.quarter == 'Midterm'">{{v.mexam / grade.midterm * 100 + (100 - v.mexam / grade.mrelim * 100) * ggrade.midterm / 100 | number }}</td> -->
+                          <td ng-if="(v.mexam * 1 / grade.midterm * 100 / 4) + (v.mactive * 1  / grade.activities * 100 / 4) + (v.mattend * 1 / grade.attendance * 100 / 4) + (v.mchar * 1 / grade.character * 100 / 4) <= 74" class="text-danger">Failed</td>
+                          <td ng-if="(v.mexam * 1 / grade.midterm * 100 / 4) + (v.mactive * 1  / grade.activities * 100 / 4) + (v.mattend * 1 / grade.attendance * 100 / 4) + (v.mchar * 1 / grade.character * 100 / 4) >= 75" class="text-success">Passed</td>
+                        </tr>
+                      </tbody>
+                      <tbody ng-if="filter.quarter == 'Finals'">
+
+                        <tr ng-repeat="(k,v) in gradelist track by $index" ng-if="gradelist.status" >
+                          <td ng-if="filter.quarter == 'Finals'">{{v.name }}</td>
+                          <td ng-if="filter.quarter == 'Finals'">{{(v.fexam * 1) / grade.finals * 100 | number}}%</td>
+                          <td ng-if="filter.quarter == 'Finals'">{{(v.factive * 1 )/ grade.activities * 100 | number}}%</td>
+                          <td ng-if="filter.quarter == 'Finals'">{{(v.fattend * 1) / grade.attendance * 100 | number}}%</td>
+                          <td ng-if="filter.quarter == 'Finals'">{{(v.fchar * 1) / grade.character * 100 | number}}%</td>
+                          
+                          <td ng-if="filter.quarter == 'Finals'">{{(v.fexam * 1 / grade.finals * 100 / 4) + (v.factive * 1  / grade.activities * 100 / 4) + (v.fattend * 1 / grade.attendance * 100 / 4) + (v.fchar * 1 / grade.character * 100 / 4)  | number}}%</td>
+                          <!-- <td ng-if="filter.quarter == 'Finals'">{{v.fexam / grade.finals * 100 + (100 - v.fexam / grade.finals * 100) * ggrade.finals / 100 | number }}</td> -->
+                          <td ng-if="(v.fexam * 1 / grade.finals * 100 / 4) + (v.factive * 1  / grade.activities * 100 / 4) + (v.fattend * 1 / grade.attendance * 100 / 4) + (v.fchar * 1 / grade.character * 100 / 4) <= 74" class="text-danger">Failed</td>
+                          <td ng-if="(v.fexam * 1 / grade.finals * 100 / 4) + (v.factive * 1  / grade.activities * 100 / 4) + (v.fattend * 1 / grade.attendance * 100 / 4) + (v.fchar * 1 / grade.character * 100 / 4) >= 75" class="text-success">Passed</td>
+
+                        </tr>
+                        
+                  
+                      </tbody>
+                      <tbody ng-if="filter.quarter == 'Final Grade'">
+
+                        <tr ng-repeat="(k,v) in gradelist track by $index" ng-if="gradelist.status" >
+                          <td>{{v.name }}</td>
+                          <td>{{(v.pexam * 1 / grade.prelim * 100 / 4) + (v.pactive * 1  / grade.activities * 100 / 4) + (v.pattend * 1 / grade.attendance * 100 / 4) + (v.pchar * 1 / grade.character * 100 / 4)  | number}}%</td>
+                          <td>{{(v.mexam * 1 / grade.midterm * 100 / 4) + (v.mactive * 1  / grade.activities * 100 / 4) + (v.mattend * 1 / grade.attendance * 100 / 4) + (v.mchar * 1 / grade.character * 100 / 4)  | number}}%</td>
+                          <td>{{(v.fexam * 1 / grade.finals * 100 / 4) + (v.factive * 1  / grade.activities * 100 / 4) + (v.fattend * 1 / grade.attendance * 100 / 4) + (v.fchar * 1 / grade.character * 100 / 4) | number}}%</td>
+                          <!-- <td ng-if="filter.quarter == 'Finals'">{{v.fexam / grade.finals * 100 + (100 - v.fexam / grade.finals * 100) * ggrade.finals / 100 | number }}</td> -->
+                          <td>{{(v.px * 1) / grade.px * 100 | number}}%</td>
+                          <td>
+                            {{(v.pexam * 1 / grade.prelim * 100 / 4 / 3) + (v.pactive * 1  / grade.activities * 100 / 4 / 3) + (v.pattend * 1 / grade.attendance * 100 / 4 / 3) + (v.pchar * 1 / grade.character * 100 / 4 / 3) +(v.mexam * 1 / grade.midterm * 100 / 4 / 3) + 
+                            (v.mactive * 1  / grade.activities * 100 / 4 / 3) + (v.mattend * 1 / grade.attendance * 100 / 4 / 3) + (v.mchar * 1 / grade.character * 100 / 4 / 3) + (v.fexam * 1 / grade.finals * 100 / 4 / 3) + (v.factive * 1  / grade.activities * 100 / 4 / 3) + (v.fattend * 1 / grade.attendance * 100 / 4 / 3) + (v.fchar * 1 / grade.character * 100 / 4 / 3)  | number}}% 
+                          </td>
+                          <td ng-if="(v.fexam * 1 / grade.finals * 100 / 4) + (v.factive * 1  / grade.activities * 100 / 4) + (v.fattend * 1 / grade.attendance * 100 / 4) + (v.fchar * 1 / grade.character * 100 / 4) <= 74" class="text-danger">Failed</td>
+                          <td ng-if="(v.fexam * 1 / grade.finals * 100 / 4) + (v.factive * 1  / grade.activities * 100 / 4) + (v.fattend * 1 / grade.attendance * 100 / 4) + (v.fchar * 1 / grade.character * 100 / 4) >= 75" class="text-success">Passed</td>
+
+                        </tr>
+                        
+                  
+                      </tbody>
+                    </table>
+          
+            </div>
+              <div class="modal-footer">
+                  <button type="button"  ng-if="filter.quarter == 'Final Grade'" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#batch">Add to archive</button>
+                  <button type="button" ng-click="worksheet()" ng-if="filter.quarter == 'Final Grade'" class="btn btn-primary" data-dismiss="modal">Export Worksheet</button>
+                  <button type="button" ng-click="" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+                
+
+     
+
+<div class="modal fade" id="batch" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal-content">
+  <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalCenterTitle">Batch</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <h1 class="text-center">Batch and Semester</h1>
+    <br>
+    <div class="text-center">
+    <label>Batch</label>
+    <input type="text" class="form-control col-lg-12 text-center bg-dark text-light" ng-model="batch.year" placeholder="Batch">
+    <br>
+    <label>Semester</label><br>
+    <select class="custom-select mr-sm-2 col-lg-12 text-center bg-dark text-light" id="inlineFormCustomSelect" ng-model="batch.semester">
+        <option selected disabled>Semester...</option>
+        <option value="1">1st</option>
+        <option value="2">2nd</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    <button type="button" class="btn btn-primary" ng-click="deactive(gradelist)" data-dismiss="modal">Confirm</button>
+  </div>
+</div>
+</div>
+</div>

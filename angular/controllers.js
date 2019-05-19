@@ -9,7 +9,7 @@ angular
 
     .controller('AppController', ['$scope', 'FileUploader', function($scope, FileUploader) {
         var uploader = $scope.uploader = new FileUploader({
-            url: '../php/FUNCTIONS/uploadclerance.php'
+            url: '../php/FUNCTIONS/uploadclearance.php'
         });
 
         // FILTERS

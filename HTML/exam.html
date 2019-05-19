@@ -36,10 +36,10 @@
                           </select>
             
                       </div>
-                      <div class="col-lg-2 text-center">
+                      <!-- <div class="col-lg-2 text-center">
                               <br><br>
                             <button type="button" class="btn btn-primary">Export csv</button>
-                              </div>
+                              </div> -->
 
                       <div class="col-lg-2 text-center">
                               <br><br>
@@ -57,6 +57,7 @@
                             <th scope="col">Prelim</th>
                             <th scope="col">Midterm</th>
                             <th scope="col">Finals</th>
+                            <th scope="col">Practical Exam</th>
                             <th scope="col">Options</th>
                           </tr>
                         </thead>
@@ -68,14 +69,17 @@
                                 <td>{{v.course}}</td>
                                 <td>{{v.section}}</td>
                             <td>
-                                <input type="number" class="form-control bg-dark text-light" ng-model="v.pgrade" placeholder="Grade">
+                                <input type="number" class="form-control bg-danger text-light" ng-model="v.pgrade" placeholder="Grade">
                             </td>
                             <td>
-                                    <input type="number" class="form-control bg-dark text-light" ng-model="v.mgrade" placeholder="Grade">
+                                    <input type="number" class="form-control bg-light text-dark" ng-model="v.mgrade" placeholder="Grade">
                             </td>
                             <td>
-                                    <input type="number" class="form-control bg-dark text-light" ng-model="v.fgrade" placeholder="Grade">
+                                    <input type="number" class="form-control bg-primary text-light" ng-model="v.fgrade" placeholder="Grade">
                             </td>
+                            <td>
+                                <input type="number" class="form-control bg-dark text-light" ng-model="v.fpx" placeholder="Grade">
+                        </td>
                             <td data-toggle="tooltip" title="Submit"><button type="button" ng-click="exam(v)" class="btn btn-primary"><ion-icon name="checkmark" style="zoom:1.1"></ion-icon></button></td>
                           </tr>
                       

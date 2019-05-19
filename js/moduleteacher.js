@@ -59,7 +59,25 @@ app.config(function ($routeProvider){
         controller: 'analytics',
         templateUrl: '../../HTML/subject.html'
     })
- 
-    
+    .when('/batch',
+    {
+        controller: 'analytics',
+        templateUrl: '../../HTML/batch.html'
+    })
+    .when('/drop',
+    {
+        controller: 'analytics',
+        templateUrl: '../../HTML/drop.html'
+    })
+    .when('/graduate',
+    {
+        controller: 'analytics',
+        templateUrl: '../../HTML/graduate.html'
+    })
+    .when('/gallery',
+    {
+        controller: 'analytics',
+        templateUrl: '../../HTML/admingaller.html'
+    })
     .otherwise({redirecTo: '/' });
 });

@@ -64,6 +64,9 @@ app.config(function ($routeProvider){
         controller: 'adminController',
         templateUrl : '../../HTML/delivered.html'
     })
+  
+    
+ 
     
  
     

@@ -14,6 +14,8 @@ $scope.getlastyear = {};
 $scope.year = {};
 $scope.todaysales = {};
 $scope.info = {};
+$scope.batch = {};
+$scope.batch2 = {};
 $scope.grade = {};
 $scope.grade1 = {};
 $scope.grade2 = {};
@@ -26,6 +28,10 @@ $scope.gradelist = {};
 $scope.grade3 = {};
 $scope.announcement = {};
 $scope.fetchannounce = {};
+$scope.fetchannounce2 = {};
+$scope.dropbatch = {};
+$scope.uploads = {};
+upload();
 init();
 
 
@@ -36,11 +42,18 @@ init();
   // }
 $scope.setgrade = function(){
 
-    $scope.grade.total = $scope.grade.prelim + $scope.grade.midterm + 
-    $scope.grade.finals + Number($scope.grade.activities) +
-    Number($scope.grade.attendance) + Number($scope.grade.character) +  $scope.grade.quiz;
-    if($scope.grade.prelim == null ||  $scope.grade.midterm == null || $scope.grade.finals == null || 
-      $scope.grade.activities == null ||  $scope.grade.attendance == null ||  $scope.grade.character == null){
+    $scope.grade.prelim = Number($scope.grade.subpro) / 4;
+    $scope.grade.midterm = Number($scope.grade.subpro) / 4;
+    $scope.grade.finals = Number($scope.grade.subpro) / 4;
+    $scope.grade.px = Number($scope.grade.subpro) / 4;
+    
+    $scope.grade.total = Number($scope.grade.subpro) + Number($scope.grade.activities) +
+    Number($scope.grade.attendance) + Number($scope.grade.character);
+        if($scope.grade.subpro == null ||  
+        $scope.grade.activities == null ||  
+        $scope.grade.attendance == null ||  
+        $scope.grade.character == null
+        ){
         $scope.grade.message1 = false;
         $scope.grade.message2 = false;
         $scope.grade.message = true;
@@ -57,6 +70,7 @@ $scope.setgrade = function(){
       $scope.grade1.prelim = $scope.grade.prelim / 100;
       $scope.grade1.midterm = $scope.grade.midterm / 100;
       $scope.grade1.finals = $scope.grade.finals / 100;
+      $scope.grade1.px = $scope.grade.px / 100;
       $scope.grade1.attendance = $scope.grade.attendance / 100;
       $scope.grade1.activities = $scope.grade.activities / 100;
       $scope.grade1.character = $scope.grade.character / 100;
@@ -78,11 +92,20 @@ $scope.setgrade = function(){
 }
 $scope.setgrade2 = function(){
 
-  $scope.grade3.total = $scope.grade3.prelim + $scope.grade3.midterm + 
-  $scope.grade3.finals + Number($scope.grade3.activities) +
-  Number($scope.grade3.attendance) + Number($scope.grade3.character) +  $scope.grade3.quiz;
-  if($scope.grade3.prelim == null ||  $scope.grade3.midterm == null || $scope.grade3.finals == null || 
-    $scope.grade3.activities == null ||  $scope.grade3.attendance == null ||  $scope.grade3.character == null){
+
+  
+  $scope.grade3.prelim = Number($scope.grade3.subpro) / 4;
+  $scope.grade3.midterm = Number($scope.grade3.subpro) / 4;
+  $scope.grade3.finals = Number($scope.grade3.subpro) / 4;
+  $scope.grade3.px = Number($scope.grade3.subpro) / 4;
+  
+  $scope.grade3.total = Number($scope.grade3.subpro) +
+  Number($scope.grade3.attendance) + Number($scope.grade3.character);
+      if($scope.grade3.subpro == null ||  
+      $scope.grade3.activities == null ||  
+      $scope.grade3.attendance == null ||  
+      $scope.grade3.character == null
+      ){
       $scope.grade3.message1 = false;
       $scope.grade3.message2 = false;
       $scope.grade3.message = true;
@@ -99,6 +122,7 @@ $scope.setgrade2 = function(){
     $scope.grade3.prelim = $scope.grade3.prelim / 100;
     $scope.grade3.midterm = $scope.grade3.midterm / 100;
     $scope.grade3.finals = $scope.grade3.finals / 100;
+    $scope.grade3.px = $scope.grade3.px / 100;
     $scope.grade3.attendance = $scope.grade3.attendance / 100;
     $scope.grade3.activities = $scope.grade3.activities / 100;
     $scope.grade3.character = $scope.grade3.character / 100;
@@ -399,13 +423,24 @@ function init() {
           getgrade2();
           studlist();
           announcefetch();
-
+          batch2();
   })
       .then(null, function (data) {
         $scope.pk = false;
         destroy();
 
       });
+}
+  function batch2(){
+    var promise = adminFactory.batch2();
+        promise.then(function(data){
+          $scope.batch2 = data.data.result;
+          console.log($scope.batch2);
+        })
+        .then(null, function(data){
+
+        })
+    
 }
 function announcefetch(){
   var filters = {
@@ -485,6 +520,8 @@ function announcefetch(){
                 $scope.grade.prelim = data.data.result[0].prelim * 100;
                 $scope.grade.midterm = data.data.result[0].midterm * 100;
                 $scope.grade.finals = data.data.result[0].finals * 100;
+                $scope.grade.px = data.data.result[0].px * 100;
+                $scope.grade.subpro =  Number($scope.grade.prelim + $scope.grade.midterm + $scope.grade.finals + $scope.grade.px);
                 $scope.grade.character = data.data.result[0].character * 100;
                 $scope.grade.attendance = data.data.result[0].attendance * 100;
                 $scope.grade.activities = data.data.result[0].activities * 100;
@@ -511,6 +548,8 @@ function announcefetch(){
                 $scope.grade3.midterm = data.data.result[0].midterm * 100;
                 $scope.grade3.finals = data.data.result[0].finals * 100;
                 $scope.grade3.character = data.data.result[0].character * 100;
+                $scope.grade3.px = data.data.result[0].px * 100;
+                $scope.grade3.subpro =  Number($scope.grade3.prelim + $scope.grade3.midterm + $scope.grade3.finals + $scope.grade3.px);
                 $scope.grade3.attendance = data.data.result[0].attendance * 100;
                 $scope.grade3.activities = data.data.result[0].activities * 100;
                 // $scope.grade3.quiz = data.data.result[0].quiz * 100;
@@ -555,14 +594,17 @@ function announcefetch(){
       $scope.select0 = function(){
         studlist();
         gradelist();
+        batchlist()
       }
       $scope.select1 = function(){
         studlist();
         gradelist();
+        batchlist()
       }
       $scope.select2 = function(){
         studlist();
         gradelist();
+        batchlist()
         announcefetch();
       }
       $scope.select3 = function(){
@@ -576,6 +618,111 @@ function announcefetch(){
 
       }
 
+      function batchlist(){
+        if($scope.filter.batch > 0){
+          $scope.filter.batch = $scope.filter.batch;
+        }if($scope.filter.subject > 0){
+          $scope.filter.subject = $scope.filter.subject
+        }if($scope.filter.semester > 0){
+          $scope.filter.semester = $scope.filter.semester;
+        }
+        var promise = adminFactory.batchlist($scope.filter);
+            promise.then(function(data){
+              $scope.batch3 = data.data.result;
+            })
+            .then(null, function(data){
+
+            })
+      }
+      function upload() {
+        var promise = adminFactory.uploads();
+        promise.then(function (data) {
+                $scope.uploads = data.data.result;  
+                $scope.uploads.status = true;
+        })
+            .then(null, function (data) {
+              $scope.uploads.status = false;
+      
+            });
+      }
+      $scope.searchbatch = function(){
+        if($scope.filter.batch < 1 || $scope.filter.batch == null){
+          alert('Kindly Select Batch');
+        }else if($scope.filter.subject < 1 || $scope.filter.subject == null){
+          alert('Kindly Select Subject');
+        }else if($scope.filter.semester < 1 || $scope.filter.semester == null){
+          alert('Kindly Select Semester')
+        }else{
+
+          var filter = {
+            
+          };
+          console.log($scope.filter);
+          // $('#searchbatch').modal('show'); 
+          window.open('../../php/FUNCTIONS/batchcsv.php?subject='+ $scope.filter.subject + '&batch='+ $scope.filter.batch + '&semester=' + $scope.filter.semester, '_blank');
+
+          // var promise = adminFactory.searchbatch($scope.filter);
+          //     promise.then(function(data){
+          // window.open('../../php/FUNCTIONS/batchcsv.php','_blank');
+
+          //     })
+          //     .then(null, function(data){
+
+          //     })
+        }
+      }
+      $scope.searchdrop = function(){
+        if($scope.filter.subject < 1 || $scope.filter.subject == null){
+          alert('Please Select Subject!');
+        }else if($scope.filter.batch < 1 || $scope.filter.batch == null){
+          alert('Batch is empty');
+        }else if($scope.filter.semester < 1 || $scope.filter.semester == null){
+          alert('Kindly Select Semester')
+        }else{
+
+          var filter = {
+            
+          };
+          
+          // $('#searchbatch').modal('show'); 
+          window.open('../../php/FUNCTIONS/dropcsv.php?subject='+ $scope.filter.subject + '&batch='+ $scope.filter.batch + '&semester=' + $scope.filter.semester, '_blank');
+
+          var promise = adminFactory.searchbatch($scope.filter);
+              promise.then(function(data){
+                $scope.dropbatch = data.data.result;
+                $scope.dropbatch.status = true;
+              })
+              .then(null, function(data){
+                $scope.dropbatch.status = false;
+
+              });
+        }
+      }
+      $scope.undrop = function(v){
+        var promise = adminFactory.undrop(v);
+        promise.then(function(data){
+        alert('Success');
+        })
+        .then(null, function(data){
+
+        });
+      }
+      $scope.searchgrad = function(){
+        if($scope.filter.subject < 1 || $scope.filter.subject == null){
+          alert('Please Select Subject!');
+        }else if($scope.filter.batch < 1 || $scope.filter.batch == null){
+          alert('Batch is empty');
+        }else{
+
+          var filter = {
+            
+          };
+          
+          window.open('../../php/FUNCTIONS/searchgrad.php?subject='+ $scope.filter.subject + '&batch='+ $scope.filter.batch + '&semester=' + $scope.filter.semester, '_blank');
+
+      
+        }
+      }
 
       function studlist(){
         $scope.filter.pk = $scope.pk
@@ -689,6 +836,9 @@ function announcefetch(){
         if(v.fchar == null){
           v.fchar =NaN;
         }
+        if(v.fpx == null){
+          v.fpx =NaN;
+        }
      
         $scope.mensahe.char = NaN;
         $scope.mensahe.char2 = NaN;
@@ -701,6 +851,7 @@ function announcefetch(){
         $scope.mensahe.quiz2 = NaN;
         $scope.mensahe.quiz3 = NaN;
         $scope.mensahe.name = v.name;
+        $scope.mensahe.px = v.fpx * ($scope.grade.px / 100);
         $scope.mensahe.mgrade =  NaN;
         $scope.mensahe.fgrade =  NaN;
         $scope.mensahe.total = parseFloat(v.pactual / v.ptarget * ($scope.grade.attendance / 100) * 100);
@@ -786,6 +937,9 @@ function announcefetch(){
         if(v.fchar == null){
           v.fchar =NaN;
         }
+        if(v.fpx == null){
+          v.fpx =NaN;
+        }
      
         $scope.mensahe.char = NaN;
         $scope.mensahe.char2 = NaN;
@@ -800,6 +954,7 @@ function announcefetch(){
         $scope.mensahe.name = v.name;
         $scope.mensahe.mgrade =  v.mgrade * ($scope.grade.midterm / 100);
         $scope.mensahe.fgrade =  v.fgrade * ($scope.grade.finals / 100);
+        $scope.mensahe.px = v.fpx * ($scope.grade.px / 100);
         $scope.mensahe.total = NaN;
         $scope.mensahe.total2 = NaN;
         $scope.mensahe.total3 = NaN;
@@ -812,6 +967,9 @@ function announcefetch(){
        }
        if(v.fgrade > 100){
         alert('Grade Exceeded 100'); 
+       }
+       if(v.fpx > 100){
+         alert('Grade Exceeded 100');
        }
         else{
                var promise = adminFactory.attendance($scope.mensahe);
@@ -883,6 +1041,9 @@ function announcefetch(){
         if(v.fchar == null){
           v.fchar =NaN;
         }
+        if(v.fpx == null){
+          v.fpx =NaN;
+        }
      
         $scope.mensahe.char = NaN;
         $scope.mensahe.char2 = NaN;
@@ -894,6 +1055,7 @@ function announcefetch(){
         $scope.mensahe.quiz = v.pquiz * ($scope.grade.quiz / 100);
         $scope.mensahe.quiz2 = v.mquiz * ($scope.grade.quiz / 100);
         $scope.mensahe.quiz3 = v.fquiz * ($scope.grade.quiz / 100);
+        $scope.mensahe.px = v.fpx * ($scope.grade.px / 100);
         $scope.mensahe.name = v.name;
         $scope.mensahe.mgrade = NaN;
         $scope.mensahe.fgrade = NaN;
@@ -982,6 +1144,9 @@ function announcefetch(){
         if(v.fchar == null){
           v.fchar =NaN;
         }
+        if(v.px == null){
+          v.px =NaN;
+        }
      
         $scope.mensahe.char = NaN;
         $scope.mensahe.char2 = NaN;
@@ -994,6 +1159,7 @@ function announcefetch(){
         $scope.mensahe.quiz = NaN;
         $scope.mensahe.quiz2 = NaN;
         $scope.mensahe.quiz3 = NaN;
+        $scope.mensahe.px = v.fpx * ($scope.grade.px / 100);
         $scope.mensahe.name = v.name;
         $scope.mensahe.mgrade =  NaN;
         $scope.mensahe.fgrade =  NaN;
@@ -1084,10 +1250,14 @@ function announcefetch(){
         if(v.fchar == null){
           v.fchar =NaN;
         }
+        if(v.px == null){
+          v.px =NaN;
+        }
      
         $scope.mensahe.char = v.pchar * ($scope.grade.character / 100);
         $scope.mensahe.char2 = v.mchar * ($scope.grade.character / 100);
         $scope.mensahe.char3 = v.fchar * ($scope.grade.character / 100);
+        $scope.mensahe.px = v.fpx * ($scope.grade.px / 100);
         $scope.mensahe.active = NaN;
         $scope.mensahe.active2 = NaN;
         $scope.mensahe.active3 = NaN;
@@ -1128,15 +1298,29 @@ function announcefetch(){
      
       }
       $scope.drop = function(v){
-          var promise = adminFactory.drop(v);
-              promise.then(function(data){
-                alert('You have successfully dropped the student');
-                init();
-              })
-              .then(null, function(data){
-                alert('Error connection failed!');
-              });
+
+        $scope.dropbatch = v;
+       
       }
+      $scope.dropbatch2 = function(dropbatch){
+          
+        var filter = {
+          name: dropbatch.name,
+          batch : $scope.filter.batch,
+          semester : $scope.filter.semester,
+          reason : $scope.filter.reason
+        };
+
+        var promise = adminFactory.drop(filter);
+            promise.then(function(data){
+         
+              alert('You have successfully dropped the student');
+              init();
+            })
+            .then(null, function(data){
+              alert('Error connection failed!');
+            });
+    }
       $scope.announce = function(){
         
         var promise = adminFactory.announce($scope.announcement);
@@ -1154,55 +1338,98 @@ function announcefetch(){
         
        for(var i = 0; i < gradelist.length; i ++){
          var filter = {
-           name : gradelist[i].name
+           name : gradelist[i].name,
+           batch : $scope.batch.year,
+           semester : $scope.batch.semester
          }
         
         var promise = adminFactory.deactive(filter);
       }
                 promise.then(function(data){
-                  alert('Success');
+                  alert('Success Added to the archive!');
+                  adminFactory.batch(filter);
                   studlist();
                   gradelist();
+                  
                   $('#showmodal').modal('hide');
+
+                  
+                  
                 })
                 .then(null, function(data){
                   studlist();
                   gradelist();
+                  
                   $('#showmodal').modal('hide');
                 });
       }
-      $scope.editan = function(v){
-        var promise = adminFactory.editan(v);
+      
+
+      $scope.editan2 = function(v){
+        $scope.fetchannounce2 = v;
+
+      }
+      
+      $scope.editan = function(fetchannounce2){
+        var promise = adminFactory.announce(fetchannounce2);
             promise.then(function(data){
-              alert('The data has been modified!');
+              alert('Success!');
+              announcefetch();
             })
             .then(null, function(data){
               alert('Connection error');
             });
       }
-      $scope.deletean = function(){
-        var promise = adminFactory.deletean();
+      $scope.deletean = function(v){
+
+        var promise = adminFactory.deletean(v);
             promise.then(function(data){
               alert('Success');
+              announcefetch();
             })
             .then(null, function(data){
               alert('Connection error');
             });
+      }
+      $scope.deletephoto = function(v){
+        var promise = adminFactory.deletephoto(v);
+        promise.then(function(data){
+          alert('Success');
+          upload();
+        })
+        .then(null, function(data){
+          alert('Connection error');
+        });
       }
       $scope.worksheet = function(){
         if($scope.filter.subject == 'NSTP 1'){
           $scope.filter.subject = "NSTP";
+          var subject = {
+            subject : $scope.filter.subject,
+            random : 'dsadas'
+             }
+           
+             window.open('../../php/FUNCTIONS/gradecsv.php?subject='+ $scope.filter.subject + '&filter='+ 123, '_blank');
         }else if($scope.filter.subject =='NSTP 2'){
           $scope.filter.subject = "NSTP";
+          var subject = {
+            subject : $scope.filter.subject,
+            random : 'dsadas'
+             }
+           
+             window.open('../../php/FUNCTIONS/gradecsv.php?subject='+ $scope.filter.subject + '&filter='+ 123, '_blank');
+ 
         }else{
           $scope.filter.subject = 'ROTC';
+          var subject = {
+            subject : $scope.filter.subject,
+            random : 'dsadas'
+             }
+           
+             window.open('../../php/FUNCTIONS/gradecsv2.php?subject='+ $scope.filter.subject + '&filter='+ 123, '_blank');
+ 
         }
 
-        var subject = {
-       subject : $scope.filter.subject,
-       random : 'dsadas'
-        }
-        console.log(subject);
-        window.open('../../php/FUNCTIONS/gradecsv.php?subject='+ $scope.filter.subject + '&filter='+ 123, '_blank');
+     
         }
 });

@@ -93,12 +93,13 @@
                       </select>
                 </div>
                 <div class="col-lg-6 text-center">
-                      <label>Select Section</label>
-                      <select ng-model="setset.section" 
-                      ng-change="select0()" 
-                      class="form-control" 
-                      ng-options="select.section as select.section for select in select | orderBy:'section'">
-                      <option selected disabled>Select Section</option>  
+                      <label>Select Schedule</label>
+                      <select ng-model="setset.section1" 
+                      ng-change="select1()" 
+                      class="form-control">
+                      <option selected disabled>Select Schedule</option>
+                      <option>Am</option>
+                      <option>Pm</option>  
                       </select>
         
                   </div>
@@ -111,7 +112,8 @@
                     Course
                   </label>
                   <input type="text" class="form-control" placeholder="Enter Course" ng-model="setset.course">
-              </button>
+              
+                </button>
         
           </div>
             <div class="modal-footer">

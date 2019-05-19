@@ -1,16 +1,19 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en"  ng-app="app">
 
 <head>
+    <link rel="icon" href="./media/samson.png">
+  
   <meta charset="UTF-8">
-  <title>Samson College of Science and Technology</title>
+  <title>NSTP-CWST-ROTC</title>
   
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
   <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css'>
-
+  <link rel="stylesheet" href="WOW-JS/css/libs/animate.css">
       <link rel="stylesheet" href="css/style.css">
+     
 <style>
 @import url('https://fonts.googleapis.com/css?family=Baloo+Chettan');
 
@@ -23,248 +26,9 @@ body{
 </head>
 
 <body>
-
-  <!-- Custom design and illustrations by Simplicity.lt  All rights are reserved by Gintautas Bakunas, 2016. -->
-<div class="nav-wrapper">
-  <nav class="navbar navbar-default mainmenu" data-offset-top="1" data-spy="affix">
-    <div class="container">
-      <div class="navbar-header">
-        <button class="navbar-toggle" data-target="#myNavbar" data-toggle="collapse" type="button"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand" href="#"><span><img src="media/samson.png" style="height: 50px;width: 50px"></span></a>
-      </div>
-      <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav" style="font-size: 20px;padding-top:15px;">
-          
-          <li class="active">
-            <a href="#">Home</a>
-          </li>
-          <li>
-            <a href="#">About us</a>
-          </li>
-          <li>
-            <a href="#">Gallery</a>
-          </li>
-          <li>
-            <a href="#">Contacts</a>
-          </li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right" style="font-size: 20px;">
-          <li>
-       <a href="HTML/loader.html"><button class="login-btn"  type="button"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Login</button></a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-</div>
-<div class="modal fade" id="login-box" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button class="close" data-dismiss="modal" type="button"></button>
-        <h4 class="modal-title">
-          Modal Header
-        </h4>
-      </div>
-      <div class="modal-body">
-        <p>
-          Some text in the modal.
-        </p>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-default" data-dismiss="modal" type="button">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-<header>
-  <div class="carousel" id="main-slider">
-    <ol class="carousel-indicators">
-      <li class="active" data-slide-to="0" data-target="#main-slider"></li>
-      <li data-slide-to="1" data-target="#main-slider"></li>
-      <li data-slide-to="2" data-target="#main-slider"></li>
-    </ol>
-    <div class="carousel-inner" role="listbox">
-      <div class="item active" style="background-image: url(media/17634835_1416432211710247_1336867949504709664_n.jpg)">
-        <div class="container">
-          <div class="row">
-            <div class="col-xs-12 col-sm-6">
-              <div class="slide-content">
-                <h1 style="color:rgb(8, 8, 8)">
-                  Mission
-                </h1>
-                <p style="font-size: 20px;color:rgb(8, 8, 8)">
-                    At Samson College of Science and Technology we believe that each student should be given the opportunity to receive a high quality education for the career best suited to his or her aptitude, interest, ambition and ability. To this goal the administration and faculty have dedicated themselves.
-
-                    Among the objectives of Samson College of Science and Technology are the following:
-                    
-                    To prepare the student to meet the diverse requirement that the career of his/her choice demands.
-                    To improve the delivery system so as to meet in the most economical, efficient manner the needs of students and the economy.
-                    To help the student develop the proper work habits, desirable attitudes and increase confidence.
-                    To help uplift the quality of life through scholarship grants under the Doña Angeles Topacio Samson Scholarship Program.                </p>
-              </div>
-            </div>
-            <div class="col-xs-12 col-sm-6">
-              <!-- <div class="slide-img">
-                <div class="banner">
-                  <img src="http://www.simplicity.lt/images/sandbox/vectors/cartoons/isminciukai/slider/banner1.png" />
-                </div>
-                <div class="house">
-                  <img src="http://www.simplicity.lt/images/sandbox/vectors/cartoons/isminciukai/slider/house1.png" />
-                </div>
-                <div class="pattern">
-                  <img src="http://www.simplicity.lt/images/sandbox/vectors/cartoons/isminciukai/slider/pattern1.png" />
-                </div>
-              </div> -->
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="item" style="background-image: url(media/17629794_1416432231710245_7069626954791545231_n.jpg)">
-        <div class="container">
-          <div class="row">
-            <div class="col-xs-12 col-sm-6">
-              <div class="slide-content">
-                    <h1 style="color:rgb(8, 8, 8)">
-                            Vission
-                          </h1>
-                          <p style="font-size: 20px;color:rgb(8, 8, 8)">
-                    Samson College of Science and Technology commits itself in providing relevant, high standard quality technical-vocational education to produce an ideal pool of human resources of skillful, competent, reliable manpower; able to adapt to technological advancement and industrial needs.                </p>
-                <!-- <a class="btn btn-primary" id="about">ABOUT US</a><a class="btn btn-primary" id="register">REGISTRATION</a> -->
-              </div>
-            </div>
-            <!-- <div class="col-xs-12 col-sm-6">
-              <div class="slide-img">
-                <div class="banner">
-                  <img src="http://www.simplicity.lt/images/sandbox/vectors/cartoons/isminciukai/slider/banner2.png" />
-                </div>
-                <div class="house">
-                  <img src="http://www.simplicity.lt/images/sandbox/vectors/cartoons/isminciukai/slider/house2.png" />
-                </div>
-                <div class="pattern">
-                  <img src="http://www.simplicity.lt/images/sandbox/vectors/cartoons/isminciukai/slider/pattern2.png" />
-                </div>
-              </div>
-            </div> -->
-          </div>
-        </div>
-      </div>
-      <div class="item" style="background-image: url(http://www.simplicity.lt/images/sandbox/vectors/cartoons/isminciukai/slider/slide3.jpg)">
-        <div class="container">
-          <div class="row">
-            <div class="col-xs-12 col-sm-6">
-              <div class="slide-content">
-                <h1>
-                  This is a Slide 3
-                </h1>
-                <p>
-                  Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-                </p>
-                <!-- <a class="btn btn-primary" id="about">ABOUT US</a><a class="btn btn-primary" id="register">REGISTRATION</a> -->
-              </div>
-            </div>
-            <!-- <div class="col-xs-12 col-sm-6">
-              <div class="slide-img">
-                <div class="banner">
-                  <img src="http://www.simplicity.lt/images/sandbox/vectors/cartoons/isminciukai/slider/banner3.png" />
-                </div>
-                <div class="house">
-                  <img src="http://www.simplicity.lt/images/sandbox/vectors/cartoons/isminciukai/slider/house3.png" />
-                </div>
-                <div class="pattern">
-                  <img src="http://www.simplicity.lt/images/sandbox/vectors/cartoons/isminciukai/slider/pattern3.png" />
-                </div>
-              </div>
-            </div> -->
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="slide-control">
-      <a class="left carousel-control" data-slide="prev" href="#main-slider" role="button"><span></span><span></span></a><a class="right carousel-control" data-slide="next" href="#main-slider" role="button"><span></span><span></span></a>
-    </div>
-  </div>
-</header>
-<div class="spotlight">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-sm-4">
-        <div class="spot">
-          <div class="spot-icon wow zoomIn" data-wow-delay="0.1s">
-            <img src="http://www.simplicity.lt/images/sandbox/vectors/cartoons/isminciukai/owls/owl-pattern1.png" /><img src="http://www.simplicity.lt/images/sandbox/vectors/cartoons/isminciukai/owls/owl1.png" />
-          </div>
-          <h2>
-            Spotlight title
-          </h2>
-          <p>
-            Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat
-          </p>
-          <a class="btn btn-primary">FIND MORE</a>
-        </div>
-      </div>
-      
-      <div class="col-xs-12 col-sm-4">
-        <div class="spot">
-          <div class="spot-icon wow zoomIn" data-wow-delay="0.2s">
-            <img src="http://www.simplicity.lt/images/sandbox/vectors/cartoons/isminciukai/owls/owl-pattern2.png" /><img src="http://www.simplicity.lt/images/sandbox/vectors/cartoons/isminciukai/owls/owl2.png" />
-          </div>
-          <h2>
-            Spotlight title
-          </h2>
-          <p>
-            Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat
-          </p>
-          <a class="btn btn-primary">FIND MORE</a>
-        </div>
-      </div>
-      <div class="col-xs-12 col-sm-4">
-        <div class="spot">
-          <div class="spot-icon wow zoomIn" data-wow-delay="0.3s">
-            <img src="http://www.simplicity.lt/images/sandbox/vectors/cartoons/isminciukai/owls/owl-pattern3.png" /><img src="https://pbs.twimg.com/profile_images/1017249980174798848/Vg3j62iD_400x400.jpg" />
-          </div>
-          <h2>
-            Spotlight title
-          </h2>
-          <p>
-            Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat
-          </p>
-          <a class="btn btn-primary">FIND MORE</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="head-ribbon">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-sm-4">
-        <div class="facebook-illustration">
-          <div class="fb-back wow fadeIn">
-            <img src="http://www.simplicity.lt/images/sandbox/vectors/cartoons/isminciukai/fb/fb-back.png" />
-          </div>
-          <div class="fb-like wow fadeInDown" data-wow-delay="0.5s">
-            <img class="wow swing-left" data-wow-iteration="infinite" src="http://www.simplicity.lt/images/sandbox/vectors/cartoons/isminciukai/fb/fb-like.png" />
-          </div>
-          <div class="fb-icon wow fadeInDown" data-wow-delay="0.5s">
-            <img class="wow swing-right" data-wow-iteration="infinite" src="http://www.simplicity.lt/images/sandbox/vectors/cartoons/isminciukai/fb/fb-icon.png" />
-          </div>
-          <div class="fb-owls wow slideInDown">
-            <img src="http://www.simplicity.lt/images/sandbox/vectors/cartoons/isminciukai/fb/fb-owls.png" />
-          </div>
-        </div>
-      </div>
-      <div class="col-xs-12 col-sm-8">
-        <h3>
-          Let's became friends. Follow our activities in Facebook.
-        </h3>
-        <div class="follow">
-          <a class="btn btn-primary" id="more">Open Facebook group page</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<div ng-view=""></div>
 <div class="footer">
-  <div class="container">
+  <div class="container wow bounceInUp" data-wow-duration="2s" data-wow-delay="1s">
     <div class="row">
       <div class="col-xs-12 col-sm-4">
         <h3>
@@ -277,9 +41,7 @@ body{
           <li>
             <a>Gallery</a>
           </li>
-          <li>
-            <a>Contacts</a>
-          </li>
+          
         </ul>
       </div>
       <div class="col-xs-12 col-sm-4">
@@ -289,6 +51,9 @@ body{
         <div class="quick-contact">
           <p class="mail">
             By E-mail: samsoncollege@gmail.com
+          </p>
+          <p>
+              <a href="https://www.facebook.com/SamsonCollege/?ref=br_rs" target="_blank">By Facebook</a>
           </p>
           <p class="phone">
             By Phone: (02) 721 4129
@@ -338,5 +103,11 @@ body{
 
 
 </body>
-
+<script src="angular/angular.min.js"></script>
+<script src="angular/angular-route.min.js"></script>
+<script src="js/moduleuser.js"></script>
+<script src="js/controllers/user.js"></script>
+<script src="js/factory/adminfactory.js"></script>
+<script src="js/factory/sessionFactory.js"></script>
+<script src="WOW-JS/dist/wow.min.js"></script>
 </html>

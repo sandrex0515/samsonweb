@@ -639,5 +639,140 @@ factory.studlist = function(data){
         });
         return promise;
     };
+    factory.batch = function(data){
+        var promise = $http({
+            url: '../../php/FUNCTIONS/batch.php',
+            method: 'POST',
+            headers: {'Content-Type' : 'application/x-www-form-urlencoded'},
+            transformRequest: function(obj){
+                var str = [];
+                for(var p in obj)
+                    str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                return str.join("&");
+                },
+                data: data  
+        });
+        return promise;
+    };
+    factory.batch2 = function(data){
+        var promise = $http({
+            url: '../../php/FUNCTIONS/batch2.php',
+            method: 'POST',
+            headers: {'Content-Type' : 'application/x-www-form-urlencoded'},
+            transformRequest: function(obj){
+                var str = [];
+                for(var p in obj)
+                    str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                return str.join("&");
+                },
+                data: data  
+        });
+        return promise;
+    };
+    factory.batchlist = function(data){
+        var promise = $http({
+            url: '../../php/FUNCTIONS/batchlist.php',
+            method: 'POST',
+            headers: {'Content-Type' : 'application/x-www-form-urlencoded'},
+            transformRequest: function(obj){
+                var str = [];
+                for(var p in obj)
+                    str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                return str.join("&");
+                },
+                data: data  
+        });
+        return promise;
+    };
+    factory.searchbatch = function(data){
+        var promise = $http({
+            url: '../../php/FUNCTIONS/batchcsv2.php',
+            method: 'POST',
+            headers: {'Content-Type' : 'application/x-www-form-urlencoded'},
+            transformRequest: function(obj){
+                var str = [];
+                for(var p in obj)
+                    str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                return str.join("&");
+                },
+                data: data  
+        });
+        return promise;
+    };
+    factory.undrop = function(data){
+        var promise = $http({
+            url: '../../php/FUNCTIONS/undrop.php',
+            method: 'POST',
+            headers: {'Content-Type' : 'application/x-www-form-urlencoded'},
+            transformRequest: function(obj){
+                var str = [];
+                for(var p in obj)
+                    str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                return str.join("&");
+                },
+                data: data  
+        });
+        return promise;
+    };
+    factory.get_info9 = function(data){
+        var promise = $http({
+            url: 'php/FUNCTIONS/getinfo9.php',
+            method: 'POST',
+            headers: {'Content-Type' : 'application/x-www-form-urlencoded'},
+            transformRequest: function(obj){
+                var str = [];
+                for(var p in obj)
+                    str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                return str.join("&");
+                },
+                data: data  
+        });
+        return promise;
+    };
+    factory.upload = function(data){
+        var promise = $http({
+            url: 'php/FUNCTIONS/uploads.php',
+            method: 'POST',
+            headers: {'Content-Type' : 'application/x-www-form-urlencoded'},
+            transformRequest: function(obj){
+                var str = [];
+                for(var p in obj)
+                    str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                return str.join("&");
+                },
+                data: data  
+        });
+        return promise;
+    };
+    factory.uploads = function(data){
+        var promise = $http({
+            url: '../../php/FUNCTIONS/uploads.php',
+            method: 'POST',
+            headers: {'Content-Type' : 'application/x-www-form-urlencoded'},
+            transformRequest: function(obj){
+                var str = [];
+                for(var p in obj)
+                    str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                return str.join("&");
+                },
+                data: data  
+        });
+        return promise;
+    };
+    factory.deletephoto = function(data){
+        var promise = $http({
+            url: '../../php/FUNCTIONS/deletephoto.php',
+            method: 'POST',
+            headers: {'Content-Type' : 'application/x-www-form-urlencoded'},
+            transformRequest: function(obj){
+                var str = [];
+                for(var p in obj)
+                    str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                return str.join("&");
+                },
+                data: data  
+        });
+        return promise;
+    };
     return factory;
 });
